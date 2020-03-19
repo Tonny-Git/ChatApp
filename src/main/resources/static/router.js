@@ -3,7 +3,7 @@ import VueRouter from 'https://cdn.jsdelivr.net/npm/vue-router@3.1.6/dist/vue-ro
 Vue.use(VueRouter)
 
 import home from './views/home.js'
-import about from './views/chatapp.js'
+import chatapp from './views/chatapp.js'
 
 export const router = new VueRouter({
   mode: 'history',
@@ -14,9 +14,9 @@ export const router = new VueRouter({
       component: home
     },
     {
-      name: "about",
-      path: '/about', 
-      component: about
+      name: "chatapp",
+      path: '/chatapp', 
+      component: chatapp
     }
   ]
 });
