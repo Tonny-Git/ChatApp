@@ -15,8 +15,6 @@ public class ChannelService {
     public List<Channel> findAllChannels() {
         List<Channel> channels = (List<Channel>) channelRepo.findAll();
 
-
-
         /*
         users.forEach(user -> {
             List<Channel> channels = channelRepo.findAllByUser(user.getId());

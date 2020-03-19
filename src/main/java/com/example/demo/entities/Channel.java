@@ -15,7 +15,6 @@ public class Channel {
 
     }
 
-
     public void setId(Integer id) {
         this.id = id;
     }
@@ -23,7 +22,6 @@ public class Channel {
     public void setTitle(String title) {
         this.title = title;
     }
-
 
     public Integer getId() {
         return id;

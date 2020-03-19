@@ -64,7 +64,7 @@ public class MessageService {
         } else {
             channel = new Channel();
             channel.setId(0);
-            channel.setTitle("Public Room");
+            channel.setTitle("Public Channel");
         }
         message.setChannel(channel);
 

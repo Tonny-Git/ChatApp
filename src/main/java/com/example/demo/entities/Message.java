@@ -1,10 +1,10 @@
 package com.example.demo.entities;
 
-import javafx.scene.text.Text;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.util.Date;
+
 
 @Entity
 @Table(name = "messages")
@@ -23,7 +23,7 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String message_date;
     private String message;
 
