@@ -37,5 +37,30 @@ public class UserService {
         return user;
     }
 
+    public User createNewUser (User user){
+        return userRepo.save(user);
+    }
+
+    public boolean login (String username, String password){
+        List<User> users = (List<User>)userRepo.findAll();
+
+        /*
+        users.forEach(usr->{
+            if (usr.getUserName().equalsIgnoreCase(username) &&
+               usr.getPassword().equals(password)) {
+                user = usr;
+           }
+        });
+
+
+        if (user == null)
+            return false;
+        else
+            return true;
+
+         */
+
+        return true;
+    }
 
 }
