@@ -5,7 +5,7 @@ export default {
             <input type="text" v-model="lastName" required placeholder="Enter your last name...">
             <input type="text" v-model="email" required placeholder="Enter your email...">
             <input type="text" v-model="username" required placeholder="Enter your username...">
-            <input type="text" v-model="password" required placeholder="Enter your password...">
+            <input type="password" v-model="password" required placeholder="Enter your password...">
             <button>Submit</button>
         </form>
     `,
