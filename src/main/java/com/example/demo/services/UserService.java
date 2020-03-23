@@ -38,7 +38,13 @@ public class UserService {
     }
 
     public User createNewUser (User user){
-        return userRepo.save(user);
+        User dbUser = null;
+        try {
+            dbUser = userRepo.save(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dbUser;
     }
 
     public boolean login (String username, String password){

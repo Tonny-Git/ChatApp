@@ -26,7 +26,7 @@ public class UserController {
         return userService.findOneUser(id);
     }
 
-    @PostMapping("/rest/users")
+    @PostMapping("/users")
     public User createNewUser(@RequestBody User user) {
         return userService.createNewUser(user);
     }

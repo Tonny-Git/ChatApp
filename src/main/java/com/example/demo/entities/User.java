@@ -12,9 +12,9 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private String firstname;
-    private String lastname;
-    boolean isactive;
+    private String firstName;
+    private String lastName;
+    boolean isActive;
 
     /* we will use it later
     @Transient
@@ -44,16 +44,16 @@ public class User {
         this.email = email;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public void setIsactive(boolean isactive) {
-        this.isactive = isactive;
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
     }
 
     public int getId() {
@@ -72,16 +72,16 @@ public class User {
         return email;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public boolean isIsactive() {
-        return isactive;
+    public boolean isIsActive() {
+        return isActive;
     }
 
 
