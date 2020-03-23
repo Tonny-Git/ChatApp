@@ -4,10 +4,12 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {
-
+    currentUser: []
   },
   mutations: {
-
+    setCurrentUser(state, user) {
+      state.currentUser = user
+    }
   },
   actions: {
 

@@ -38,7 +38,7 @@ export default {
 
             result = await result.json()
 
-            //add to store?
+            this.$store.commit('setCurrentUser', result)
 
             this.firstName = ''
             this.lastName = ''
