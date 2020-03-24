@@ -20,7 +20,7 @@ public class UserChannel {
         this.admin = admin;
     }
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     @MapsId("member_id")
     @JoinColumn(name = "member_id")
     User user;
@@ -41,7 +41,7 @@ public class UserChannel {
         this.channel = channel;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("channel_id")
     @JoinColumn(name = "channel_id")
     Channel channel;

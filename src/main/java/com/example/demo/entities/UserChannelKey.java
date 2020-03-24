@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-class UserChannelKey implements Serializable {
+public class UserChannelKey implements Serializable {
 
     @Column(name = "member_id")
     int member_id;
@@ -49,4 +49,8 @@ class UserChannelKey implements Serializable {
         return Objects.hash(getMember_id(), getChannel_id());
     }
 
+    @Override
+    public String toString() {
+        return "Member: " + member_id + " (" + channel_id + ")";
+    }
 }
