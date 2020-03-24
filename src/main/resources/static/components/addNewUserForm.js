@@ -25,7 +25,8 @@ export default {
                 lastName: this.lastName,
                 email: this.email,
                 username: this.username,
-                password: this.password
+                password: this.password,
+                isActive: true
             }
 
             let result = await fetch('/rest/users', {

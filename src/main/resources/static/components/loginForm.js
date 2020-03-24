@@ -20,7 +20,7 @@ export default {
                 password: this.password
             }
 
-            let result = await fetch('/rest/users', {
+            let result = await fetch('/rest/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

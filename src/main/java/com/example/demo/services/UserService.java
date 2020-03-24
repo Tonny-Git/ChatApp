@@ -40,33 +40,25 @@ public class UserService {
     public User createNewUser (User user){
         User dbUser = null;
         try {
+            System.out.println("Before Database: " + user.getUsername());
             dbUser = userRepo.save(user);
+            System.out.println("After Database");
         } catch (Exception e) {
             e.printStackTrace();
         }
         return dbUser;
     }
 
-    public boolean login (String username, String password){
-        List<User> users = (List<User>)userRepo.findAll();
+    public User login (String username, String password){
+        User user = null;
 
-        /*
-        users.forEach(usr->{
-            if (usr.getUserName().equalsIgnoreCase(username) &&
-               usr.getPassword().equals(password)) {
-                user = usr;
-           }
-        });
+        try {
+            user = (User)userRepo.findAllByUsernameAndPassword(username, password);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-
-        if (user == null)
-            return false;
-        else
-            return true;
-
-         */
-
-        return true;
+        return user;
     }
 
 }
