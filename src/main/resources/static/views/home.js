@@ -7,11 +7,20 @@ export default {
         loginForm
     },
     template: `
-        <div>
-            <h1>Start Page</h1>
-            <loginOrCreateDiv v-if="login"/>
-            <loginForm v-else/>
-            <button @click="onButtonClick">{{buttonText}}</button>
+        <div class="home-container">
+            <div class="home">
+                <div>
+                    <h1>Welcome to chatapp!</h1>
+                </div>
+                <div>
+                    <loginForm v-if="!login"/>
+                    <button class="button" @click="onButtonClick">{{buttonText}}</button>
+                    <loginOrCreateDiv v-if="login"/>
+                </div>
+            </div>
+            <footer>
+                <p>This project was made by: Ammar, Marius, Sebastian, Tonny and Victor!</p>
+            </footer>
         </div>
     `,
     data() {
