@@ -1,12 +1,18 @@
 export default {
     template: `
-        <form @submit.prevent="submitNewUser">
-            <input type="text" v-model="firstName" required placeholder="Enter your first name...">
-            <input type="text" v-model="lastName" required placeholder="Enter your last name...">
-            <input type="text" v-model="email" required placeholder="Enter your email...">
-            <input type="text" v-model="username" required placeholder="Enter your username...">
-            <input type="password" v-model="password" required placeholder="Enter your password...">
-            <button>Submit</button>
+        <form @submit.prevent="submitNewUser" class="home">
+            <div class="sign-up-text">
+                <h2>Sign up</h2>
+                <h3>Please fill in this form to create an account</h3>
+            </div>
+            <div class="sign-up-form">
+                <input type="text" v-model="firstName" required placeholder="Enter your first name...">
+                <input type="text" v-model="lastName" required placeholder="Enter your last name...">
+                <input type="text" v-model="email" required placeholder="Enter your email...">
+                <input type="text" v-model="username" required placeholder="Enter your username...">
+                <input type="password" v-model="password" required placeholder="Enter your password...">
+                <button class="button">Submit</button>
+            </div>
         </form>
     `,
     data() {

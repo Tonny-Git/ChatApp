@@ -1,9 +1,9 @@
 export default {
     template: `
         <form @submit.prevent="login">
-            <input type="text" v-model="username" placeholder="Enter your username...">
-            <input type="password" v-model="password" placeholder="Enter your password...">
-            <button>Submit</button>
+            <input class="normal-input" type="text" v-model="username" placeholder="Enter your username...">
+            <input class="normal-input" type="password" v-model="password" placeholder="Enter your password...">
+            <button class="button">Submit</button>
         </form>
     `,
     data() {

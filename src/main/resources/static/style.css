@@ -18,6 +18,16 @@ a {
     text-decoration: none;
 }
 
+input {
+    color: black;
+    background-color: rgb(241, 237, 237);
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+}
+
 /*-------------
     navbar
 ---------------*/
@@ -59,6 +69,11 @@ nav a:hover {
     margin: 0;
 }
 
+.submit-div {
+    display: flex;
+    flex-direction: row;
+}
+
 footer {
     display: flex;
     justify-content: center;
@@ -72,8 +87,7 @@ footer {
     border-radius: 5px;
     background: none;
     padding: 10px 30px;
-    margin-bottom: 150px;
-    margin-top: 20px;
+    margin: 10px 5px;
     font-size: 1em;
 }
 
@@ -83,6 +97,33 @@ footer {
 
 .home div h1 {
     font-size: 2.7em;
+}
+
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+}
+
+.sign-up-form input, .normal-input {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.sign-up-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.sign-up-text h2 {
+    font-size: 2em;
+    margin: 0px 0px 0px 0px ;
+}
+
+.take-space-div {
+    height: 150px;
 }
 
 

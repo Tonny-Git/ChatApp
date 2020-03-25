@@ -1,10 +1,12 @@
 import loginOrCreateDiv from '../components/loginOrCreateDiv.js'
 import loginForm from '../components/loginForm.js'
+import footerComponent from '../components/footerComponent.js'
 
 export default {
     components: {
         loginOrCreateDiv,
-        loginForm
+        loginForm,
+        footerComponent
     },
     template: `
         <div class="home-container">
@@ -12,15 +14,14 @@ export default {
                 <div>
                     <h1>Welcome to chatapp!</h1>
                 </div>
-                <div>
+                <div class="submit-div">
                     <loginForm v-if="!login"/>
                     <button class="button" @click="onButtonClick">{{buttonText}}</button>
                     <loginOrCreateDiv v-if="login"/>
                 </div>
+                <div class="take-space-div"></div>
             </div>
-            <footer>
-                <p>This project was made by: Ammar, Marius, Sebastian, Tonny and Victor!</p>
-            </footer>
+            <footerComponent/>
         </div>
     `,
     data() {
