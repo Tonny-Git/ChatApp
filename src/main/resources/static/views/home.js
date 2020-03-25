@@ -17,13 +17,28 @@ export default {
     data() {
         return {
             login: true,
-            buttonText: "Login"
+            buttonText: "Login",
+            isCurrentUser: false
         }
     },
     methods: {
         onButtonClick() {
             this.login = !this.login
             this.buttonText = this.login ? "Login" : "Cancel"
+
+            this.checkIfUserIsLoggedIn()
+            if(this.isCurrentUser) {
+                console.log("There is an user!")
+            } else {
+                console.log("There not an user: " + this.$store.state.currentUser)
+            }
+        },
+        checkIfUserIsLoggedIn() {
+            if(this.$store.state.currentUser === null) {
+                this.isCurrentUser = false;
+            } else {
+                this.isCurrentUser = true;
+            }
         }
-    }
+    },
 }

@@ -1,6 +1,6 @@
 export default {
     template: `
-        <form @prevent.default="">
+        <form @submit.prevent="login">
             <input type="text" v-model="username" placeholder="Enter your username...">
             <input type="password" v-model="password" placeholder="Enter your password...">
             <button>Submit</button>
@@ -13,7 +13,7 @@ export default {
         }
     },
     methods: {
-        async Login() {
+        async login() {
             //Test.. Continue here
             let user = {
                 username: this.username,

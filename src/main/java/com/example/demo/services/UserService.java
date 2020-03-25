@@ -40,9 +40,7 @@ public class UserService {
     public User createNewUser (User user){
         User dbUser = null;
         try {
-            System.out.println("Before Database: " + user.getUsername());
             dbUser = userRepo.save(user);
-            System.out.println("After Database");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,7 +51,8 @@ public class UserService {
         User user = null;
 
         try {
-            user = (User)userRepo.findAllByUsernameAndPassword(username, password);
+            user = userRepo.findAllByUsernameAndPassword(username, password);
+            System.out.println(user.getLastName());
         } catch (Exception e) {
             e.printStackTrace();
         }
