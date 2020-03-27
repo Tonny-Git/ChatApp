@@ -7,6 +7,7 @@
     --bg-secondary: rgb(31, 31, 45);
     --bg-tertiary: rgb(30, 30, 32);
     --transition-speed: 600ms;
+    --leftDistance: 5rem;
 }
 
 body {
@@ -29,12 +30,12 @@ body::-webkit-scrollbar-thumb {
     background: var(--bg-secondary);
 }
 
-body::-webkit-scrollbar-thumb:hover {
+body::-webkit-scrollbar-thumb-hover {
     background: var(--text-primary);
 }
 
 main {
-    margin-left: 5rem;
+    margin-left: var(--leftDistance);
     padding: 1rem;
 }
 
@@ -67,7 +68,8 @@ main {
 .nav-link {
     display: flex;
     align-items: center;
-    height: 5rem;
+    height: var(--leftDistance);
+    ;
     color: var(--text-primary);
     text-decoration: none;
     filter: grayscale(100%) opacity(0.7);
@@ -137,7 +139,7 @@ main {
     .navbar {
         bottom: 0;
         width: 100vw;
-        height: 5rem;
+        height: var(--leftDistance);
     }
 
     .logo {
@@ -161,7 +163,7 @@ main {
 @media only screen and (min-width: 600px) {
     .navbar {
         top: 0;
-        width: 5rem;
+        width: var(--leftDistance);
         height: 100vh;
     }
 
