@@ -26,17 +26,27 @@ public class Message {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String message_date;
     private String message;
-
+    private boolean direct;
     private boolean read;
     private int sender_id;
 
     @Column(nullable = true)
     private Integer channel_id;
-
     private int receiver_id;
 
-    public Message() {
-
+    public Message (){}
+    public Message(User sender, User receiver, Channel channel, int id, String message_date, String message,boolean direct, boolean read, int sender_id, Integer channel_id, int receiver_id) {
+        this.sender = sender;
+        this.receiver = receiver;
+        this.channel = channel;
+        this.id = id;
+        this.message_date = message_date;
+        this.message = message;
+        this.direct = direct ;
+        this.read = read;
+        this.sender_id = sender_id;
+        this.channel_id = channel_id;
+        this.receiver_id = receiver_id;
     }
 
     public void setSender(User sender) {
@@ -117,6 +127,14 @@ public class Message {
 
     public int getReceiver_id() {
         return receiver_id;
+    }
+
+    public void setDirect(boolean direct) {
+        this.direct = direct;
+    }
+
+    public boolean isDirect() {
+        return direct;
     }
 
 

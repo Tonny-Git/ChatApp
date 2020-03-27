@@ -1,7 +1,13 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import javax.websocket.OnError;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -21,10 +27,43 @@ public class User {
     public List<Channel> userChannels;
     */
 
-    @Transient
-    public List<User> friends;
 
-    public User() {
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "userfriends",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "friend_id") })
+    @JsonIgnoreProperties("friends")
+    private Set<User> friends = new HashSet<>();
+
+    public Object[] getFriends(){
+        return friends.toArray();
+    }
+
+    /*
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @JsonIgnoreProperties("userChannels")
+    private Set<UserChannel> userChannels = new HashSet<>();
+
+    public Object[] getUserChannels() {return userChannels.toArray();}
+
+    public void setUserChannels(List<UserChannel> userChannels) {
+        this.userChannels = new HashSet<> (userChannels);
+    }
+*/
+
+    public User(){}
+    public User(int id, String username, String password, String email, String firstname, String lastname, boolean isactive) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.isactive = isactive;
 
     }
 
@@ -84,5 +123,17 @@ public class User {
         return isActive;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User that = (User) o;
+        return getId() == that.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
 
 }
