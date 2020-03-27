@@ -38,30 +38,27 @@ public class UserService {
         return user;
     }
 
-    public User createNewUser(User user) {
-        return userRepo.save(user);
+    public User createNewUser (User user){
+        User dbUser = null;
+        try {
+            dbUser = userRepo.save(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dbUser;
     }
 
-    public boolean login(String username, String password) {
-        List<User> users = (List<User>) userRepo.findAll();
+    public User login (String username, String password){
+        User user = null;
 
-        /*
-        users.forEach(usr->{
-            if (usr.getUserName().equalsIgnoreCase(username) &&
-               usr.getPassword().equals(password)) {
-                user = usr;
-           }
-        });
+        try {
+            user = userRepo.findAllByUsernameAndPassword(username, password);
+            System.out.println(user.getLastName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-
-        if (user == null)
-            return false;
-        else
-            return true;
-
-         */
-
-        return true;
+        return user;
     }
 
 }

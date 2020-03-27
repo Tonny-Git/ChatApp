@@ -3,7 +3,6 @@ let isConnected = false;
 connect();
 
 function connect() {
-    // change PORT to your backends PORT
     ws = new WebSocket('ws://localhost:4000/your-socket-route');
     ws.onmessage = (e) => {
       showSomething(e.data);

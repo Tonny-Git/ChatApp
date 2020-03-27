@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap');
+
+/*------------------
+    Major Content
+-------------------*/
+
+* {
+    box-sizing: border-box;
+    color: rgb(223, 219, 219);
+    font-family: 'Baloo Chettan 2', cursive;
+}
+
+body {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    color: black;
+    background-color: rgb(241, 237, 237);
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+}
+
+/*-------------
+    navbar
+---------------*/
+
+nav {
+    display: flex;
+    align-items: center;
+    height: 7vh;
+    background-color: #18181b;
+}
+
+nav a {
+    padding: 9px 15px 9px 15px;
+    text-align: center;
+}
+
+nav a:hover {
+    background-color: #1e1e20;
+}
+
+/* -------------------------
+    Signup page + Home page
+--------------------------- */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    height: 93vh;
+    width: 100;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #26262c;
+    padding: 30px;
+    height: 90%;
+    margin: 0;
+}
+
+.submit-div {
+    display: flex;
+    flex-direction: row;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: #1f1f23;
+    height: 10%;
+    margin: 0;
+}
+
+.button {
+    border: 1px solid rgb(104, 102, 102);
+    border-radius: 5px;
+    background: none;
+    padding: 10px 30px;
+    margin: 10px 5px;
+    font-size: 1em;
+}
+
+.button:hover {
+    background-color: #34343b;
+}
+
+.home div h1 {
+    font-size: 2.7em;
+}
+
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+}
+
+.sign-up-form input, .normal-input {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.sign-up-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.sign-up-text h2 {
+    font-size: 2em;
+    margin: 0px 0px 0px 0px ;
+}
+
+.take-space-div {
+    height: 150px;
+}
+
+
