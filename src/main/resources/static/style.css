@@ -7,7 +7,10 @@
     --bg-secondary: rgb(31, 31, 45);
     --bg-tertiary: rgb(30, 30, 32);
     --transition-speed: 600ms;
+<<<<<<< HEAD
     --leftDistance: 5rem;
+=======
+>>>>>>> master
 }
 
 body {
@@ -30,12 +33,20 @@ body::-webkit-scrollbar-thumb {
     background: var(--bg-secondary);
 }
 
+<<<<<<< HEAD
 body::-webkit-scrollbar-thumb-hover {
+=======
+body::-webkit-scrollbar-thumb:hover {
+>>>>>>> master
     background: var(--text-primary);
 }
 
 main {
+<<<<<<< HEAD
     margin-left: var(--leftDistance);
+=======
+    margin-left: 5rem;
+>>>>>>> master
     padding: 1rem;
 }
 
@@ -68,8 +79,12 @@ main {
 .nav-link {
     display: flex;
     align-items: center;
+<<<<<<< HEAD
     height: var(--leftDistance);
     ;
+=======
+    height: 5rem;
+>>>>>>> master
     color: var(--text-primary);
     text-decoration: none;
     filter: grayscale(100%) opacity(0.7);
@@ -139,7 +154,11 @@ main {
     .navbar {
         bottom: 0;
         width: 100vw;
+<<<<<<< HEAD
         height: var(--leftDistance);
+=======
+        height: 5rem;
+>>>>>>> master
     }
 
     .logo {
@@ -163,7 +182,11 @@ main {
 @media only screen and (min-width: 600px) {
     .navbar {
         top: 0;
+<<<<<<< HEAD
         width: var(--leftDistance);
+=======
+        width: 5rem;
+>>>>>>> master
         height: 100vh;
     }
 
