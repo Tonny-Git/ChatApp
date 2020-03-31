@@ -32,7 +32,8 @@ export default {
             } else {
                 let user = await fetch('/auth/whoami')
                 user = await user.json()
-                console.log('Successfully logged in: ', user)
+                this.$store.commit('setCurrentUser', user)
+                this.$router.push('/')
             }
 
             /*

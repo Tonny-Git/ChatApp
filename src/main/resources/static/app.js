@@ -16,9 +16,7 @@ export default {
 
       try {
         user = await user.json()
-        console.log(user)
-      } catch {
-        console.log('Client not auth')
-      }
+        this.$store.commit('setCurrentUser', user)
+      } catch {}
     }
   }

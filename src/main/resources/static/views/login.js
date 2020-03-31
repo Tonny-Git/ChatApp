@@ -10,6 +10,7 @@ export default {
         <div class="home-container">
             <div class="home">
                 <loginForm/>
+                <div class="take-space-div"></div>
             </div>
             <footerComponent/>
         </div>
