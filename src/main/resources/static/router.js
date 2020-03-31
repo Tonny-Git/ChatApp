@@ -18,11 +18,6 @@ export const router = new VueRouter({
       name: "chatapp",
       path: '/chatapp', 
       component: chatapp
-    },
-    {
-      name: "signup",
-      path: '/signup', 
-      component: signup
     }
   ]
 });

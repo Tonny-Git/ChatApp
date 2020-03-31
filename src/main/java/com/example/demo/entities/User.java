@@ -18,9 +18,9 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private String firstName;
-    private String lastName;
-    boolean isActive;
+    private String firstname;
+    private String lastname;
+    boolean isactive;
 
     /* we will use it later
     @Transient
@@ -71,8 +71,8 @@ public class User {
         this.id = id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.username = userName;
     }
 
     public void setPassword(String password) {
@@ -83,23 +83,23 @@ public class User {
         this.email = email;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public void setIsActive(boolean isActive) {
-        this.isActive = isActive;
+    public void setIsactive(boolean isactive) {
+        this.isactive = isactive;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getUsername() {
+    public String getUserName() {
         return username;
     }
 
@@ -111,16 +111,16 @@ public class User {
         return email;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public boolean isIsActive() {
-        return isActive;
+    public boolean isIsactive() {
+        return isactive;
     }
 
     @Override
