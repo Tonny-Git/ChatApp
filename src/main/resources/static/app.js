@@ -11,6 +11,7 @@ export default {
         </main>
       </div>
     `,
+    //kollar om där finns en användare inloggad vid omstart
     async created() {
       let user = await fetch('/auth/whoami')
 
