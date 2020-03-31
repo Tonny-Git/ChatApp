@@ -1,12 +1,10 @@
 package com.example.demo.services;
 
-import com.example.demo.configs.MyUserDetailsService;
 import com.example.demo.entities.User;
 import com.example.demo.entities.UserChannel;
 import com.example.demo.repositories.UserChannelRepo;
 import com.example.demo.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,9 +13,6 @@ import java.util.List;
 public class UserService {
     @Autowired
     private UserRepo userRepo;
-
-    @Autowired
-    private MyUserDetailsService myUserDetailsService;
 
     @Autowired
     private UserChannelRepo userChannelRepo;
@@ -43,15 +38,27 @@ public class UserService {
         return user;
     }
 
-    public User findCurrentUser() {
-        // the login session is stored between page reloads,
-        // and we can access the current authenticated user with this
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        return userRepo.findByUsername(username);
+    public User createNewUser (User user){
+        User dbUser = null;
+        try {
+            dbUser = userRepo.save(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dbUser;
     }
 
-    public User registerUser(User user) {
-        return myUserDetailsService.addUser(user.getUsername(), user.getPassword(), user.getEmail(), user.getFirstName(), user.getLastName());
+    public User login (String username, String password){
+        User user = null;
+
+        try {
+            user = userRepo.findAllByUsernameAndPassword(username, password);
+            System.out.println(user.getLastName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return user;
     }
 
 }

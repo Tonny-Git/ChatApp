@@ -10,14 +10,5 @@ export default {
           <router-view />
         </main>
       </div>
-    `,
-    //kollar om där finns en användare inloggad vid omstart
-    async created() {
-      let user = await fetch('/auth/whoami')
-
-      try {
-        user = await user.json()
-        this.$store.commit('setCurrentUser', user)
-      } catch {}
-    }
+    `
   }
