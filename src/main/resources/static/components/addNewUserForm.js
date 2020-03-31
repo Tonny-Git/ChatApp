@@ -3,7 +3,7 @@ export default {
         <form @submit.prevent="submitNewUser" class="home">
             <div class="sign-up-text">
                 <h2>Sign up</h2>
-                <h3>Please fill in this form to create an account</h3>
+                <h3>{{h3Text}}</h3>
             </div>
             <div class="sign-up-form">
                 <input type="text" v-model="firstName" required placeholder="Enter your first name...">
@@ -21,7 +21,8 @@ export default {
             lastName: '',
             email: '',
             username: '',
-            password: ''
+            password: '',
+            h3Text: 'Please fill in this form to create an account'
         }
     },
     methods: {
@@ -45,11 +46,22 @@ export default {
 
             try {
                 result = await result.json()
-                //Ändra senare
-                console.log('Successfully registered:', result)
+                const credentials = 'username=' + encodeURIComponent(this.username)
+                + '&password=' + encodeURIComponent(this.password)
+
+                let response = await fetch("/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: credentials
+                });
+
+                let user = await fetch('/auth/whoami')
+                
+                user = await user.json()
+                this.$store.commit('setCurrentUser', user)
+                this.$router.push('/')
             } catch {
-                //Ändra senare
-                console.log('Error, could not register')
+                this.h3Text = "Error. Please try another username!"
             }
 
             //this.$store.commit('setCurrentUser', result)

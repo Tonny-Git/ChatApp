@@ -17,7 +17,6 @@ export default {
     },
     methods: {
         async login() {
-            console.log('Hello')
             const credentials = 'username=' + encodeURIComponent(this.username)
             + '&password=' + encodeURIComponent(this.password)
 
@@ -35,30 +34,6 @@ export default {
                 this.$store.commit('setCurrentUser', user)
                 this.$router.push('/')
             }
-
-            /*
-            //Test.. Continue here
-            let user = {
-                username: this.username,
-                password: this.password
-            }
-
-            let result = await fetch('/rest/users/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(user)
-            })
-
-            result = await result.json()
-
-            this.$store.commit('setCurrentUser', result)
-
-            this.username = ''
-            this.password = ''
-            */
         }
-
     }
 }
