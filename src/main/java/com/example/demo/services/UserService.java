@@ -43,21 +43,6 @@ public class UserService {
         return user;
     }
 
-    //Gammal kåd ta bort eller ändra
-    public User login (String username, String password){
-        User user = null;
-
-        try {
-            user = userRepo.findAllByUsernameAndPassword(username, password);
-            System.out.println(user.getLastName());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return user;
-    }
-
-    //Nya login metod
     public User findCurrentUser() {
         // the login session is stored between page reloads,
         // and we can access the current authenticated user with this
@@ -65,7 +50,6 @@ public class UserService {
         return userRepo.findByUsername(username);
     }
 
-    //Nya register metod
     public User registerUser(User user) {
         return myUserDetailsService.addUser(user.getUsername(), user.getPassword(), user.getEmail(), user.getFirstName(), user.getLastName());
     }

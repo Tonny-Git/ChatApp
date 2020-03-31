@@ -10,5 +10,15 @@ export default {
           <router-view />
         </main>
       </div>
-    `
+    `,
+    async created() {
+      let user = await fetch('/auth/whoami')
+
+      try {
+        user = await user.json()
+        console.log(user)
+      } catch {
+        console.log('Client not auth')
+      }
+    }
   }

@@ -30,9 +30,8 @@ public class UserController {
         return userService.registerUser(user);
     }
 
-    /*
-    @PostMapping("/rest/users/login")
-    public  User loginUser(@RequestBody User user) {
-        return userService.login(user.getUsername(), user.getPassword());
-    }*/
+    @GetMapping("/auth/whoami")
+    public User whoAmI() {
+        return userService.findCurrentUser();
+    }
 }

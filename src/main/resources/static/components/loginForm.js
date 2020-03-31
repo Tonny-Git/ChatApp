@@ -30,11 +30,9 @@ export default {
             if(response.url.includes('error')) {
                 console.log('Wrong username/password');
             } else {
-                console.log("Position 1")
-                response = await response.json()
-                console.log("Position 2")
-                console.log("respones: " + response)
-                console.log("Position 3")
+                let user = await fetch('/auth/whoami')
+                user = await user.json()
+                console.log('Successfully logged in: ', user)
             }
 
             /*
