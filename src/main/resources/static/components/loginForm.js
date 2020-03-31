@@ -1,12 +1,17 @@
 export default {
     template: `
-        <form @submit.prevent="login">
+        <form @submit.prevent="login" class="home">
             <div class="sign-up-text">
-                <h2>Login</h2>
+                <h2 class="login-text">Login</h2>
             </div>
-            <input class="normal-input" type="text" v-model="username" placeholder="Enter your username...">
-            <input class="normal-input" type="password" v-model="password" placeholder="Enter your password...">
-            <button class="button">Submit</button>
+            <div>
+                <input class="normal-input" type="text" v-model="username" placeholder="Enter your username...">
+                <input class="normal-input input-with-margin" type="password" v-model="password" placeholder="Enter your password...">
+            </div>
+            <div>
+                <button class="button">Submit</button>
+                <button type="button" @click="createUser" class="button">Create new user</button>
+            </div>
         </form>
     `,
     data() {
@@ -34,6 +39,9 @@ export default {
                 this.$store.commit('setCurrentUser', user)
                 this.$router.push('/')
             }
+        },
+        createUser() {
+            this.$router.push('/signup')
         }
     }
 }
