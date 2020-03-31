@@ -44,17 +44,6 @@ public class UserService {
     }
 
     //Gammal kåd ta bort eller ändra
-    public User createNewUser (User user){
-        User dbUser = null;
-        try {
-            dbUser = userRepo.save(user);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return dbUser;
-    }
-
-    //Gammal kåd ta bort eller ändra
     public User login (String username, String password){
         User user = null;
 

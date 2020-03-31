@@ -26,9 +26,9 @@ public class UserController {
         return userService.findOneUser(id);
     }
 
-    @PostMapping("/users")
+    @PostMapping("/auth/register")
     public User createNewUser(@RequestBody User user) {
-        return userService.createNewUser(user);
+        return userService.registerUser(user);
     }
 
     @PostMapping("/users/login")
