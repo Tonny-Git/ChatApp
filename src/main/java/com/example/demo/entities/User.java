@@ -1,6 +1,8 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import javax.websocket.OnError;
@@ -12,6 +14,7 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -29,10 +32,7 @@ public class User {
 
 
     @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            })
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "userfriends",
             joinColumns = { @JoinColumn(name = "user_id") },
             inverseJoinColumns = { @JoinColumn(name = "friend_id") })
@@ -56,14 +56,14 @@ public class User {
 */
 
     public User(){}
-    public User(int id, String username, String password, String email, String firstname, String lastname, boolean isactive) {
-        this.id = id;
+
+    public User(String username, String password, String email, String firstname, String lastname, boolean isactive) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.isactive = isactive;
+        this.firstName = firstname;
+        this.lastName = lastname;
+        this.isActive = isactive;
 
     }
 
@@ -75,6 +75,7 @@ public class User {
         this.username = username;
     }
 
+    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
     }
@@ -103,6 +104,7 @@ public class User {
         return username;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
