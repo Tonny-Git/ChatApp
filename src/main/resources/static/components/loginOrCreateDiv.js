@@ -21,19 +21,13 @@ export default {
             isCurrentUser: false
         }
     },
-    created() {
-        //<button class="button" @click="onButtonClick">{{buttonText}}</button
-    },
     methods: {
-
-        //Fix to work
         onButtonClick() {
             if(this.isCurrentUser) {
-                //console.log("There is an user! " + + this.$store.state.currentUser)
-                console.log(this.isCurrentUser)
+                this.$store.commit('setCurrentUser', null)
+                fetch('/logout')
             } else {
-                //this.$router.push('/login')
-                console.log(this.isCurrentUser)
+                this.$router.push('/login')
             }
         }
     }
