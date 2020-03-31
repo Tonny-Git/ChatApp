@@ -17,6 +17,7 @@ export default {
     },
     methods: {
         async login() {
+            console.log('Hello')
             const credentials = 'username=' + encodeURIComponent(this.username)
             + '&password=' + encodeURIComponent(this.password)
 
@@ -28,6 +29,12 @@ export default {
 
             if(response.url.includes('error')) {
                 console.log('Wrong username/password');
+            } else {
+                console.log("Position 1")
+                response = await response.json()
+                console.log("Position 2")
+                console.log("respones: " + response)
+                console.log("Position 3")
             }
 
             /*

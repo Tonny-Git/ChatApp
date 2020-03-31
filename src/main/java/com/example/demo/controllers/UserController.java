@@ -9,19 +9,18 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/rest")
 public class UserController {
 
     @Autowired
     UserService userService;
 
 
-    @GetMapping("/users")
+    @GetMapping("/rest/users")
     public List<User> getAllUsers() {
         return userService.findAllUsers();
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/rest/users/{id}")
     public User getOneUser(@PathVariable int id) {
         return userService.findOneUser(id);
     }
@@ -31,8 +30,9 @@ public class UserController {
         return userService.registerUser(user);
     }
 
-    @PostMapping("/users/login")
+    /*
+    @PostMapping("/rest/users/login")
     public  User loginUser(@RequestBody User user) {
         return userService.login(user.getUsername(), user.getPassword());
-    }
+    }*/
 }

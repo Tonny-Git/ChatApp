@@ -35,7 +35,7 @@ export default {
                 isActive: true
             }
 
-            let result = await fetch('/rest/users', {
+            let result = await fetch('/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -43,9 +43,16 @@ export default {
                 body: JSON.stringify(user)
             })
 
-            result = await result.json()
+            try {
+                result = await result.json()
+                //Ändra senare
+                console.log('Successfully registered:', result)
+            } catch {
+                //Ändra senare
+                console.log('Error, could not register')
+            }
 
-            this.$store.commit('setCurrentUser', result)
+            //this.$store.commit('setCurrentUser', result)
 
             this.firstName = ''
             this.lastName = ''
