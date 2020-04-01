@@ -1,7 +1,6 @@
 package com.example.demo.services;
 
 import com.example.demo.entities.User;
-import com.example.demo.entities.UserChannel;
 import com.example.demo.repositories.UserChannelRepo;
 import com.example.demo.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +15,9 @@ public class UserService {
 
     @Autowired
     private UserChannelRepo userChannelRepo;
+
+    @Autowired
+    private SocketService socketService;
 
     //@Autowired
     //private FriendRepo friendRepo;
@@ -42,6 +44,8 @@ public class UserService {
         User dbUser = null;
         try {
             dbUser = userRepo.save(user);
+            dbUser.action = "new-pet";
+            socketService.sendToAll(dbUser, User.class);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,7 +57,7 @@ public class UserService {
 
         try {
             user = userRepo.findAllByUsernameAndPassword(username, password);
-            System.out.println(user.getLastName());
+            System.out.println(user.getLast_name());
         } catch (Exception e) {
             e.printStackTrace();
         }

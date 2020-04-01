@@ -12,6 +12,9 @@ public class ChannelService {
     @Autowired
     private ChannelRepo channelRepo;
 
+    @Autowired
+    private SocketService socketService;
+
     public List<Channel> findAllChannels() {
         List<Channel> channels = (List<Channel>) channelRepo.findAll();
 
@@ -36,5 +39,18 @@ public class ChannelService {
 
         return channel;
     }
+
+    public Channel createNewChannel(Channel newChannel) {
+        Channel dbChannel = null;
+        try {
+            dbChannel = channelRepo.save(newChannel);
+            dbChannel.action = "new-pet";
+            socketService.sendToAll(dbChannel, Channel.class);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return dbChannel;
+    }
+
 }
 
