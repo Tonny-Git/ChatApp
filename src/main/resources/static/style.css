@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap');
 
 /*------------------
     Major Content
@@ -123,6 +124,14 @@ footer {
 
 .take-space-div {
     height: 150px;
+}
+
+.login-text {
+    padding-bottom: 20px;
+}
+
+.input-with-margin {
+    margin-left: 3px;
 }
 
 

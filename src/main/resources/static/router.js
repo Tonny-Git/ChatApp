@@ -5,6 +5,7 @@ Vue.use(VueRouter)
 import home from './views/home.js'
 import chatapp from './views/chatapp.js'
 import signup from './views/signup.js'
+import login from './views/login.js'
 
 export const router = new VueRouter({
   mode: 'history',
@@ -15,9 +16,19 @@ export const router = new VueRouter({
       component: home
     },
     {
+      name:"login",
+      path: '/login', 
+      component: login
+    },
+    {
       name: "chatapp",
       path: '/chatapp', 
       component: chatapp
+    },
+    {
+      name: "signup",
+      path: '/signup', 
+      component: signup
     }
   ]
 });
