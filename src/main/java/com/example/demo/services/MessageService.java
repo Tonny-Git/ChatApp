@@ -22,6 +22,10 @@ public class MessageService {
     @Autowired
     private ChannelRepo channelRepo;
 
+    public Message postMessage(Message message) {
+        return messageRepo.save(message);
+    }
+
     public List<Message> findAllMessages() {
         List<Message> messages = (List<Message>) messageRepo.findAll();
 
