@@ -1,9 +1,17 @@
 export default {
     template: `
-        <form @submit.prevent="login">
-            <input class="normal-input" type="text" v-model="username" placeholder="Enter your username...">
-            <input class="normal-input" type="password" v-model="password" placeholder="Enter your password...">
-            <button class="button">Submit</button>
+        <form @submit.prevent="login" class="home">
+            <div class="sign-up-text">
+                <h2 class="login-text">Login</h2>
+            </div>
+            <div>
+                <input class="normal-input" type="text" v-model="username" placeholder="Enter your username...">
+                <input class="normal-input input-with-margin" type="password" v-model="password" placeholder="Enter your password...">
+            </div>
+            <div>
+                <button class="button">Submit</button>
+                <button type="button" @click="createUser" class="button">Create new user</button>
+            </div>
         </form>
     `,
     data() {
@@ -14,27 +22,26 @@ export default {
     },
     methods: {
         async login() {
-            //Test.. Continue here
-            let user = {
-                username: this.username,
-                password: this.password
+            const credentials = 'username=' + encodeURIComponent(this.username)
+            + '&password=' + encodeURIComponent(this.password)
+
+            let response = await fetch("/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: credentials
+            });
+
+            if(response.url.includes('error')) {
+                console.log('Wrong username/password');
+            } else {
+                let user = await fetch('/auth/whoami')
+                user = await user.json()
+                this.$store.commit('setCurrentUser', user)
+                this.$router.push('/')
             }
-
-            let result = await fetch('/rest/users/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(user)
-            })
-
-            result = await result.json()
-
-            this.$store.commit('setCurrentUser', result)
-
-            this.username = ''
-            this.password = ''
+        },
+        createUser() {
+            this.$router.push('/signup')
         }
-
     }
 }

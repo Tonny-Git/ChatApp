@@ -1,9 +1,11 @@
 package com.example.demo.services;
 
+import com.example.demo.configs.MyUserDetailsService;
 import com.example.demo.entities.User;
 import com.example.demo.repositories.UserChannelRepo;
 import com.example.demo.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +14,9 @@ import java.util.List;
 public class UserService {
     @Autowired
     private UserRepo userRepo;
+
+    @Autowired
+    private MyUserDetailsService myUserDetailsService;
 
     @Autowired
     private UserChannelRepo userChannelRepo;
