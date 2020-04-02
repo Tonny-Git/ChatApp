@@ -12,19 +12,19 @@ export default {
     },
     methods: {
         async sendNewMessage() {
-            let date = new Date;
+            let date = new Date();
 
             let dateString = ''
 
             console.log()
 
             let newMessage = {
-                messageDate: '', //Fixed?
+                messageDate: new Date().toLocaleString, //Fixed?
                 message: this.message,
                 read: false, //Remove in database, backend and here later if no time left.
-                sender: this.$store.state.currentUser.id, // Fix
-                channel: null, // Fix
-                receiver: null, //fix
+                senderId: this.$store.state.currentUser.id, // Fix
+                channelId: 1, // Fix
+                receiverId: null, //fix
                 direct: false // Change later? remove?
             }
 

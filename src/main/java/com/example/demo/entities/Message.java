@@ -24,29 +24,40 @@ public class Message {
     private int id;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private String message_date;
+    private String messageDate;
     private String message;
     private boolean direct;
     private boolean read;
-    private int sender_id;
+    private int senderId;
 
-    @Column(nullable = true)
-    private Integer channel_id;
-    private int receiver_id;
+    //@Column(nullable = true)
+    private int channelId;
+    private int receiverId;
 
     public Message (){}
+
+    public Message(String messageDate, String message, Boolean read, int senderId, int channelId, int receiverId, boolean direct) {
+        this.messageDate = messageDate;
+        this.message = message;
+        this.read = read;
+        this.senderId = senderId;
+        this.channelId = channelId;
+        this.receiverId = receiverId;
+        this.direct = direct;
+    }
+
     public Message(User sender, User receiver, Channel channel, int id, String message_date, String message,boolean direct, boolean read, int sender_id, Integer channel_id, int receiver_id) {
         this.sender = sender;
         this.receiver = receiver;
         this.channel = channel;
         this.id = id;
-        this.message_date = message_date;
+        this.messageDate = message_date;
         this.message = message;
         this.direct = direct ;
         this.read = read;
-        this.sender_id = sender_id;
-        this.channel_id = channel_id;
-        this.receiver_id = receiver_id;
+        this.senderId = sender_id;
+        this.channelId = channel_id;
+        this.receiverId = receiver_id;
     }
 
     public void setSender(User sender) {
@@ -65,8 +76,8 @@ public class Message {
         this.id = id;
     }
 
-    public void setMessage_date(String message_date) {
-        this.message_date = message_date;
+    public void setMessageDate(String messageDate) {
+        this.messageDate = messageDate;
     }
 
     public void setMessage(String message) {
@@ -77,16 +88,16 @@ public class Message {
         this.read = read;
     }
 
-    public void setSender_id(int sender_id) {
-        this.sender_id = sender_id;
+    public void setSenderId(int senderId) {
+        this.senderId = senderId;
     }
 
-    public void setChannel_id(Integer channel_id) {
-        this.channel_id = channel_id;
+    public void setChannelId(Integer channelId) {
+        this.channelId = channelId;
     }
 
-    public void setReceiver_id(int receiver_id) {
-        this.receiver_id = receiver_id;
+    public void setReceiverId(int receiverId) {
+        this.receiverId = receiverId;
     }
 
     public User getSender() {
@@ -105,8 +116,8 @@ public class Message {
         return id;
     }
 
-    public String getMessage_date() {
-        return message_date;
+    public String getMessageDate() {
+        return messageDate;
     }
 
     public String getMessage() {
@@ -117,16 +128,16 @@ public class Message {
         return read;
     }
 
-    public int getSender_id() {
-        return sender_id;
+    public int getSenderId() {
+        return senderId;
     }
 
-    public Integer getChannel_id() {
-        return channel_id;
+    public Integer getChannelId() {
+        return channelId;
     }
 
-    public int getReceiver_id() {
-        return receiver_id;
+    public int getReceiverId() {
+        return receiverId;
     }
 
     public void setDirect(boolean direct) {
