@@ -22,6 +22,9 @@ public class MessageService {
     @Autowired
     private ChannelRepo channelRepo;
 
+    @Autowired
+    private SocketService socketService;
+
     public List<Message> findAllMessages() {
         List<Message> messages = (List<Message>) messageRepo.findAll();
 
@@ -69,5 +72,17 @@ public class MessageService {
         message.setChannel(channel);
 
         return message;
+    }
+
+    public Message createNewMessage(Message newMessage) {
+        Message dbMessage = null;
+        try {
+            dbMessage = messageRepo.save(newMessage);
+            dbMessage.action = "new-pet";
+            socketService.sendToAll(dbMessage, Channel.class);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return dbMessage;
     }
 }
