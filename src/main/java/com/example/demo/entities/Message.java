@@ -34,9 +34,6 @@ public class Message {
     private Integer channel_id;
     private int receiver_id;
 
-    @Transient
-    public String action;
-
     public Message (){}
     public Message(User sender, User receiver, Channel channel, int id, String message_date, String message,boolean direct, boolean read, int sender_id, Integer channel_id, int receiver_id) {
         this.sender = sender;
