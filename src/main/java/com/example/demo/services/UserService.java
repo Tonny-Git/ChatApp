@@ -62,12 +62,21 @@ public class UserService {
 
         try {
             user = userRepo.findAllByUsernameAndPassword(username, password);
-            System.out.println(user.getLast_name());
+            System.out.println(user.getLastName());
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return user;
+    }
+    public User findCurrentUser() {
+        // the login session is stored between page reloads,
+        // and we can access the current authenticated user with this
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return userRepo.findByUsername(username);
+    }
+    public User registerUser(User user) {
+        return myUserDetailsService.addUser(user.getUsername(), user.getPassword(), user.getEmail(), user.getFirstName(), user.getLastName());
     }
 
 }

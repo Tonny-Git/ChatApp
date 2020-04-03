@@ -1,7 +1,9 @@
+import channelsComponent from "../components/channelsComponent.js";
+
 export default {
-    template: `
+	template: `
     <div>
         
     </div>
     `
-}
+};
