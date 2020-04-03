@@ -12,6 +12,29 @@ export default {
     },
     methods: {
         async sendNewMessage() {
+            let dateTime = getDateTime()
+
+            let newMessage = {
+                messageDate: dateTime, //Fixed?
+                message: this.message,
+                read: false, //Remove in database, backend and here later if no time left.
+                senderId: this.$store.state.currentUser.id, // Fix
+                channelId: 1, // Fix (this.$store.state.currentChannel.id)
+                receiverId: null, //fix
+                direct: false // Change later? remove?
+            }
+
+            let response = await fetch('/rest/messages', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newMessage)
+            })
+
+            response = await response.json()
+        },
+        getDateTime() {
             let newMessageDate = new Date();
             //Collects all timestamps in an array
             let newDateTimeFormat = [
@@ -34,28 +57,7 @@ export default {
                     dateTime += ":"
                 }
             }
-
-            let newMessage = {
-                messageDate: dateTime, //Fixed?
-                message: this.message,
-                read: false, //Remove in database, backend and here later if no time left.
-                senderId: this.$store.state.currentUser.id, // Fix
-                channelId: 1, // Fix
-                receiverId: null, //fix
-                direct: false // Change later? remove?
-            }
-
-            console.log(newMessage) //Remove later
-
-            let response = await fetch('/rest/messages', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(newMessage)
-            })
-
-            response = await response.json()
+            return dateTime
         }
     }
 }

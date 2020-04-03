@@ -74,4 +74,8 @@ public class MessageService {
 
         return message;
     }
+
+    public void deleteOneMessage(int id) {
+        messageRepo.deleteById(id);
+    }
 }

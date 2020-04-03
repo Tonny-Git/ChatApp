@@ -33,4 +33,9 @@ public class MessageController {
         System.out.println("THIS IS AN TEST");
         return messageService.postMessage(message);
     }
+
+    @DeleteMapping("/messages/{id}")
+    public void deleteMessage(@PathVariable int id) {
+        messageService.deleteOneMessage(id);
+    }
 }
