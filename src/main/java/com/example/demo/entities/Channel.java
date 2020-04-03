@@ -17,6 +17,9 @@ public class Channel {
         this.title = title;
     }
 
+    @Transient
+    public String action;
+
     public Channel() {
 
     }

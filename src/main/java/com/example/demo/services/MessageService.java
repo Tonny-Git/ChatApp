@@ -22,6 +22,9 @@ public class MessageService {
     @Autowired
     private ChannelRepo channelRepo;
 
+    @Autowired
+    private SocketService socketService;
+
     public Message postMessage(Message message) {
         return messageRepo.save(message);
     }
@@ -77,5 +80,17 @@ public class MessageService {
 
     public void deleteOneMessage(int id) {
         messageRepo.deleteById(id);
+    }
+
+    public Message createNewMessage(Message newMessage) {
+        Message dbMessage = null;
+        try {
+            dbMessage = messageRepo.save(newMessage);
+            dbMessage.action = "new-pet";
+            socketService.sendToAll(dbMessage, Channel.class);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return dbMessage;
     }
 }

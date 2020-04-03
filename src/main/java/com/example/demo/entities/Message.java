@@ -34,6 +34,9 @@ public class Message {
     private int channelId;
     private int receiverId;
 
+    @Transient
+    public String action;
+
     public Message (){}
 
     public Message(String messageDate, String message, Boolean read, int senderId, int channelId, int receiverId, boolean direct) {
