@@ -25,18 +25,22 @@ public class MessageService {
     @Autowired
     private SocketService socketService;
 
+    public Message postMessage(Message message) {
+        return messageRepo.save(message);
+    }
+
     public List<Message> findAllMessages() {
         List<Message> messages = (List<Message>) messageRepo.findAll();
 
 
         messages.forEach(message -> {
-            User sender = userRepo.findById(message.getSender_id());
+            User sender = userRepo.findById(message.getSenderId());
             message.setSender(sender);
 
-            User receiver = userRepo.findById(message.getReceiver_id());
+            User receiver = userRepo.findById(message.getReceiverId());
             message.setReceiver(receiver);
 
-            Integer channel_id = message.getChannel_id();
+            Integer channel_id = message.getChannelId();
             if (channel_id != null) {
                 Channel channel = channelRepo.findById((int) channel_id);
                 message.setChannel(channel);
@@ -54,13 +58,13 @@ public class MessageService {
         List<Channel> pets = channelRepo.findAllByUser(id); // use the same ID as the owner when we ask for the pets
         owner.setPets(pets);
         */
-        User sender = userRepo.findById(message.getSender_id());
+        User sender = userRepo.findById(message.getSenderId());
         message.setSender(sender);
 
-        User receiver = userRepo.findById(message.getReceiver_id());
+        User receiver = userRepo.findById(message.getReceiverId());
         message.setReceiver(receiver);
 
-        Integer channel_id = message.getChannel_id();
+        Integer channel_id = message.getChannelId();
         Channel channel;
         if (channel_id != null) {
             channel = channelRepo.findById((int) channel_id);
@@ -72,6 +76,10 @@ public class MessageService {
         message.setChannel(channel);
 
         return message;
+    }
+
+    public void deleteOneMessage(int id) {
+        messageRepo.deleteById(id);
     }
 
     public Message createNewMessage(Message newMessage) {

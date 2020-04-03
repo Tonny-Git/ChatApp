@@ -3,21 +3,20 @@ import Vuex from "https://cdn.jsdelivr.net/npm/vuex@3.1.2/dist/vuex.esm.browser.
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
-	state: {
-		currentUser: null,
-		currentChannel: {}
-	},
-	mutations: {
-		setCurrentUser(state, user) {
-			state.currentUser = user;
-		},
-		getCurrentUser(state) {
-			return state.currentUser;
-		},
-		setCurrentChannel(state, channel) {
-			state.currentChannel = channel;
-			localStorage.setItem("currentChannel", JSON.stringify(channel));
-		}
-	},
-	actions: {}
-});
+  state: {
+    currentUser: null,
+    currentChannel: null
+  },
+  mutations: {
+    setCurrentUser(state, user) {
+      state.currentUser = user
+    },
+    setCurrentChannel(state, channel) {
+      state.currentChannel = channel
+    },
+    //remove?
+    getCurrentUser(state) {
+      return state.currentUser
+    }
+  },
+  actions: {

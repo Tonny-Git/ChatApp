@@ -39,6 +39,7 @@ export default {
                 this.$store.commit('setCurrentUser', user)
                 this.$router.push('/')
             }
+            console.log(this.$store.state.currentUser)
         },
         createUser() {
             this.$router.push('/signup')

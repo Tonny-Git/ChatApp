@@ -27,8 +27,16 @@ public class MessageController {
     }
 
     @PostMapping("/messages")
-    public Message createNewMessage(@RequestBody Message message) {
-        return messageService.createNewMessage(message);
+    public Message sendOneMessage(@RequestBody Message message) {
+        System.out.println("THIS IS AN TEST");
+        System.out.println(message);
+        System.out.println("THIS IS AN TEST");
+        return messageService.postMessage(message);
+    }
+
+    @DeleteMapping("/messages/{id}")
+    public void deleteMessage(@PathVariable int id) {
+        messageService.deleteOneMessage(id);
     }
 }
 
