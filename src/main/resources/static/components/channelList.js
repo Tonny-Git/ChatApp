@@ -59,7 +59,7 @@ export default {
 			console.log(channelToAdd);
 
 			try {
-				await fetch("/rest/userChannel", {
+				await fetch("/rest/userxchannel", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
@@ -87,7 +87,7 @@ export default {
 			};
 
 			try {
-				await fetch("/rest/serverMessages", {
+				await fetch("/rest/messages", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
