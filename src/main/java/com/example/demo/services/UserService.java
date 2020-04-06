@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -80,7 +81,13 @@ public class UserService {
         // the login session is stored between page reloads,
         // and we can access the current authenticated user with this
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        return addChannelToCurrentUser(userRepo.findByUsername(username));
+        User user = userRepo.findByUsername(username);
+        try {
+            user = addChannelToCurrentUser(user);
+        } catch (Exception e) {
+            System.out.println("There is no user currently logged in");
+        }
+        return user;
     }
     public User registerUser(User user) {
         return myUserDetailsService.addUser(user.getUsername(), user.getPassword(), user.getEmail(), user.getFirstName(), user.getLastName());
@@ -89,11 +96,12 @@ public class UserService {
     //Needs to retrieve admin also later.
     public User addChannelToCurrentUser(User user) {
         List<UserChannelRel> foundUserChannels = userChannelRelRepo.findByUserId(user.getId());
-        List<Channel> channels = null;
+        ArrayList<Channel> channels = new ArrayList<>();
+        //List<Channel> channels = null;
         for (UserChannelRel foundUserChannel : foundUserChannels) {
             channels.add(channelRepo.findById(foundUserChannel.getChannelId()));
         }
-        user.setUserChannels(channels);
+        user.setListOfChannels(channels);
         return user;
     }
 

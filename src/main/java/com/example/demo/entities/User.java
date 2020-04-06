@@ -21,7 +21,7 @@ public class User {
     private String lastName;
     boolean isActive;
     @Transient
-    private List<Channel> userChannels;
+    private ArrayList<Channel> listOfChannels;
 
     /* we will use it later
     @Transient
@@ -125,12 +125,12 @@ public class User {
             return isActive;
         }
 
-    public List<Channel> getUserChannels() {
-        return userChannels;
+    public ArrayList<Channel> getListOfChannels() {
+        return listOfChannels;
     }
 
-    public void setUserChannels(List<Channel> userChannels) {
-        this.userChannels = userChannels;
+    public void setListOfChannels(ArrayList<Channel> listOfChannels) {
+        this.listOfChannels = listOfChannels;
     }
 
     @Override

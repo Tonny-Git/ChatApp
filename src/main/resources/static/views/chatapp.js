@@ -1,5 +1,6 @@
 import sendMessageComponent from '../components/sendMessageComponent.js'
 import messageBox from '../components/messageBox.js'
+import channelBoxComponent from '../components/channelBoxComponent.js'
 
 //import channelsComponent from "../components/channelsComponent.js"
 //import channelList from "../components/channelList.js";
@@ -7,10 +8,12 @@ import messageBox from '../components/messageBox.js'
 export default {
     components: {
         sendMessageComponent,
-        messageBox
+        messageBox,
+        channelBoxComponent
     },
     template: `
     <div>
+        <channelBoxComponent/>
         <messageBox/>
         <sendMessageComponent/>
     </div>
