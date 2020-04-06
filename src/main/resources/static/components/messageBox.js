@@ -1,20 +1,21 @@
 export default {
     template: `
         <div>
-            <button>Delete Message</button>
+            <button @click="onClick">Delete Message</button>
         </div>
     `,
     data() {
+        return {
 
+        }
     },
     methods: {
-        onClick() {
-            let response = await fetch('/rest/messages', {
-                method: 'Delete',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(newMessage)
+        async onClick() {
+            let id = 4
+            document.getElementsByClassName()
+
+            let response = await fetch('/rest/messages/' + id, {
+                method: 'Delete'
             })
         }
     }
