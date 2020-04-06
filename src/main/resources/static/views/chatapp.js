@@ -14,8 +14,10 @@ export default {
     template: `
     <div>
         <channelBoxComponent/>
-        <messageBox/>
-        <sendMessageComponent/>
+        <div>
+            <messageBox/>
+            <sendMessageComponent/>
+        </div>
     </div>
     `
 };
