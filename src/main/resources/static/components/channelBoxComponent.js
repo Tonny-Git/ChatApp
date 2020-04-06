@@ -17,8 +17,13 @@ export default {
         }
     },
     methods: {
-        onClick(i) {
+        async onClick(i) {
             this.$store.commit('setCurrentChannel', this.$store.state.currentUser.listOfChannels[i])
+            let channelId = this.$store.state.currentChannel.id
+            let response = await fetch('/rest/messages/' + channelId)
+            response = await response.json()
+            this.$store.commit('setCurrentChannelMessages', response)
+            console.log(this.$store.state.currentChannelMessages)
         }
     }
 }

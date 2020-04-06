@@ -1,27 +1,19 @@
 export default {
     template: `
         <div>
-            <div v-for="message in messages">
+            <div v-for="message in showMessages">
                 <p>{{message.message}}</p>
             </div>
             <button @click="onClick">Delete Message</button>
         </div>
     `,
     computed: {
-        async showMessages() {
-            if(this.$store.state.currentChannel === null) {
-
+        showMessages() {
+            if(this.$store.state.currentChannelMessages === null) {
+                return {}
             } else {
-                
-                let response = await fetch('/rest/messages' + this.$store.state.currentChannel.id)
-    
-                messages = response = await response.json()
+                return this.$store.state.currentChannelMessages
             }
-        }
-    },
-    data() {
-        return {
-            messages: {}
         }
     },
     methods: {

@@ -5,7 +5,8 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
     currentUser: null,
-    currentChannel: null
+    currentChannel: null,
+    currentChannelMessages: null
   },
   mutations: {
     setCurrentUser(state, user) {
@@ -14,9 +15,8 @@ export const store = new Vuex.Store({
     setCurrentChannel(state, channel) {
       state.currentChannel = channel
     },
-    //remove?
-    getCurrentUser(state) {
-      return state.currentUser
+    setCurrentChannelMessages(state, messages) {
+      state.currentChannelMessages = messages
     }
   },
   actions: {
