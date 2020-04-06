@@ -12,7 +12,7 @@ export default {
     },
     methods: {
         async sendNewMessage() {
-            let dateTime = getDateTime()
+            let dateTime = this.getDateTime()
 
             let newMessage = {
                 messageDate: dateTime, //Fixed?

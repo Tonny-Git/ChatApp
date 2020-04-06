@@ -1,7 +1,11 @@
 package com.example.demo.services;
 
 import com.example.demo.configs.MyUserDetailsService;
+import com.example.demo.entities.Channel;
 import com.example.demo.entities.User;
+import com.example.demo.entities.UserChannelRel;
+import com.example.demo.repositories.ChannelRepo;
+import com.example.demo.repositories.UserChannelRelRepo;
 import com.example.demo.repositories.UserChannelRepo;
 import com.example.demo.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +23,13 @@ public class UserService {
     private MyUserDetailsService myUserDetailsService;
 
     @Autowired
-    private UserChannelRepo userChannelRepo;
+    private UserChannelRelRepo userChannelRelRepo;
 
     @Autowired
     private SocketService socketService;
+
+    @Autowired
+    private ChannelRepo channelRepo;
 
     //@Autowired
     //private FriendRepo friendRepo;
@@ -73,10 +80,21 @@ public class UserService {
         // the login session is stored between page reloads,
         // and we can access the current authenticated user with this
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        return userRepo.findByUsername(username);
+        return addChannelToCurrentUser(userRepo.findByUsername(username));
     }
     public User registerUser(User user) {
         return myUserDetailsService.addUser(user.getUsername(), user.getPassword(), user.getEmail(), user.getFirstName(), user.getLastName());
+    }
+
+    //Needs to retrieve admin also later.
+    public User addChannelToCurrentUser(User user) {
+        List<UserChannelRel> foundUserChannels = userChannelRelRepo.findByUserId(user.getId());
+        List<Channel> channels = null;
+        for (UserChannelRel foundUserChannel : foundUserChannels) {
+            channels.add(channelRepo.findById(foundUserChannel.getChannelId()));
+        }
+        user.setUserChannels(channels);
+        return user;
     }
 
 }

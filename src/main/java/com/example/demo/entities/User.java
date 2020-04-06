@@ -5,9 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
@@ -22,6 +20,8 @@ public class User {
     private String firstName;
     private String lastName;
     boolean isActive;
+    @Transient
+    private List<Channel> userChannels;
 
     /* we will use it later
     @Transient
@@ -65,78 +65,86 @@ public class User {
             this.firstName = firstName;
             this.lastName = lastName;
             this.isActive = isActive;
-        }
+    }
 
-        public void setId ( int id){
+    public void setId ( int id){
             this.id = id;
         }
 
-        public void setUsername (String username){
-            this.username = username;
-        }
+    public void setUsername (String username){
+        this.username = username;
+    }
 
-        @JsonProperty
-        public void setPassword (String password){
+    @JsonProperty
+    public void setPassword (String password){
             this.password = password;
         }
 
-        public void setEmail (String email){
+    public void setEmail (String email){
             this.email = email;
         }
 
-        public void setFirstName(String firstName){
+    public void setFirstName(String firstName){
             this.firstName = firstName;
         }
 
-        public void setLastName(String lastName){
-            this.lastName = lastName;
-        }
+    public void setLastName(String lastName){
+        this.lastName = lastName;
+    }
 
-        public void setIsActive ( boolean isActive){
+    public void setIsActive ( boolean isActive){
             this.isActive = isActive;
         }
 
-        public int getId () {
+    public int getId () {
             return id;
         }
 
-        public String getUsername () {
+    public String getUsername () {
             return username;
         }
 
-        @JsonIgnore
-        public String getPassword () {
+    @JsonIgnore
+    public String getPassword () {
             return password;
         }
 
-        public String getEmail () {
+    public String getEmail () {
             return email;
         }
 
-        public String getFirstName() {
+    public String getFirstName() {
             return firstName;
         }
 
-        public String getLastName() {
+    public String getLastName() {
             return lastName;
         }
 
-        public boolean isIsActive () {
+    public boolean isIsActive () {
             return isActive;
         }
 
-        @Override
-        public boolean equals (Object o){
-            if (this == o) return true;
-            if (!(o instanceof User)) return false;
-            User that = (User) o;
-            return getId() == that.getId();
-        }
-
-        @Override
-        public int hashCode () {
-            return Objects.hash(getId());
-        }
-
+    public List<Channel> getUserChannels() {
+        return userChannels;
     }
+
+    public void setUserChannels(List<Channel> userChannels) {
+        this.userChannels = userChannels;
+    }
+
+    @Override
+    public boolean equals (Object o){
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User that = (User) o;
+        return getId() == that.getId();
+    }
+
+    @Override
+    public int hashCode () {
+        return Objects.hash(getId());
+    }
+
+}
 
