@@ -1,6 +1,8 @@
 package com.example.demo.controllers;
 
+import com.example.demo.entities.Socket;
 import com.example.demo.services.SocketService;
+import com.google.gson.Gson;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
@@ -12,6 +14,8 @@ import java.io.IOException;
 @Controller
 public class SocketController extends TextWebSocketHandler {
 
+    Gson gson = new Gson();
+
     // NOTE: Can not use @Autowired here due to WebSocketConfig instantiating the SocketController
     private SocketService socketService;
     public void setSocketService(SocketService socketService) {
@@ -21,6 +25,13 @@ public class SocketController extends TextWebSocketHandler {
     @Override
     public void handleTextMessage(WebSocketSession session, TextMessage message) throws IOException {
         System.out.println("Received msg: " + message.getPayload());
+
+        Socket socket = gson.fromJson(message.getPayload(), com.example.demo.entities.Socket.class);
+        System.out.println("Action: " + socket.getAction());
+        System.out.println("Message: " + socket.getMessage());
+        System.out.println("Timestamp: " + socket.getTimestamp());
+
+        socketService.sendToAll(socket, Socket.class);
 
         // Demonstration purpose only: send back "Hello" + same message as received
         socketService.sendToAll("Hello " + message.getPayload());

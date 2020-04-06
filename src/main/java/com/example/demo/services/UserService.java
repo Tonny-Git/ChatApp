@@ -49,7 +49,7 @@ public class UserService {
         User dbUser = null;
         try {
             dbUser = userRepo.save(user);
-            dbUser.action = "new-pet";
+            dbUser.action = "new-user";
             socketService.sendToAll(dbUser, User.class);
         } catch (Exception e) {
             e.printStackTrace();

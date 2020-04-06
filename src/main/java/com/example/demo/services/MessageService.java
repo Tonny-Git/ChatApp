@@ -26,7 +26,17 @@ public class MessageService {
     private SocketService socketService;
 
     public Message postMessage(Message message) {
-        return messageRepo.save(message);
+        Message dbMessage = null;
+
+        try{
+            dbMessage = messageRepo.save(message);
+            dbMessage.action = "new-message";
+            socketService.sendToAll(dbMessage, Message.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return dbMessage;
     }
 
     public List<Message> findAllMessages() {
@@ -54,10 +64,6 @@ public class MessageService {
         Message message = messageRepo.findById(id);
         if (message == null) return null;
 
-        /*
-        List<Channel> pets = channelRepo.findAllByUser(id); // use the same ID as the owner when we ask for the pets
-        owner.setPets(pets);
-        */
         User sender = userRepo.findById(message.getSenderId());
         message.setSender(sender);
 
@@ -86,7 +92,7 @@ public class MessageService {
         Message dbMessage = null;
         try {
             dbMessage = messageRepo.save(newMessage);
-            dbMessage.action = "new-pet";
+            dbMessage.action = "delete-message";
             socketService.sendToAll(dbMessage, Channel.class);
         } catch(Exception e) {
             e.printStackTrace();
