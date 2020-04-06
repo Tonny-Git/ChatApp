@@ -44,7 +44,7 @@ public class ChannelService {
         Channel dbChannel = null;
         try {
             dbChannel = channelRepo.save(newChannel);
-            dbChannel.action = "new-pet";
+            dbChannel.action = "new-channel";
             socketService.sendToAll(dbChannel, Channel.class);
         } catch(Exception e) {
             e.printStackTrace();
