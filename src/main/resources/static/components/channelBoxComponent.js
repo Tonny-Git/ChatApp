@@ -23,7 +23,6 @@ export default {
             let response = await fetch('/rest/messages/' + channelId)
             response = await response.json()
             this.$store.commit('setCurrentChannelMessages', response)
-            console.log(this.$store.state.currentChannelMessages)
         }
     }
 }

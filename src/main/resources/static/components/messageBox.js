@@ -1,8 +1,12 @@
 export default {
     template: `
         <div class="message-box-div">
-            <div v-for="message in showMessages">
-                <p>{{message.message}}</p>
+            <div v-for="message in showMessages" class="message-div">
+                <span class="inner-message-div">
+                    <p class="message-name">{{message.senderName}}</p>
+                    <p class="message-date">{{message.messageDate}}</p>
+                </span>
+                <p class="message-p">{{message.message}}</p>
             </div>
             <button @click="onClick">Delete Message</button>
         </div>
