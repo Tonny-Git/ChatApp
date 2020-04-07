@@ -1,6 +1,6 @@
 export default {
     template: `
-        <div>
+        <div class="message-box-div">
             <div v-for="message in showMessages">
                 <p>{{message.message}}</p>
             </div>
@@ -18,6 +18,7 @@ export default {
     },
     methods: {
         async onClick() {
+            //Fix later
             let id = 4
             document.getElementsByClassName()
 

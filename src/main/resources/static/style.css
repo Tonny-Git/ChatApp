@@ -134,4 +134,32 @@ footer {
     margin-left: 3px;
 }
 
+/* ------------
+    ChatApp
+------------- */
 
+.chat-app-cover-div {
+    display: flex;
+    flex-direction: row;
+    height: 93vh;
+    width: 100;
+    background-color: #26262c;
+}
+
+.message-div {
+    display: flex;
+    flex-direction: column;
+}
+
+.channel-box-div {
+    width: 15%;
+    background-color: #212126;
+}
+
+.message-box-div {
+    height: 80%;
+}
+
+.send-message-form {
+
+}

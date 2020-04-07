@@ -1,6 +1,6 @@
 export default {
     template: `
-        <form @submit.prevent="sendNewMessage">
+        <form @submit.prevent="sendNewMessage" class="send-message-form">
             <textarea v-model="message"></textarea>
             <button>Send</button>
         </form>
@@ -18,8 +18,8 @@ export default {
                 messageDate: dateTime, //Fixed?
                 message: this.message,
                 read: false, //Remove in database, backend and here later if no time left.
-                senderId: this.$store.state.currentUser.id, // Fix
-                channelId: 1, // Fix (this.$store.state.currentChannel.id)
+                senderId: this.$store.state.currentUser.id, // Fixed?
+                channelId: this.$store.state.currentChannel.id, // Fixed?
                 receiverId: null, //fix
                 direct: false // Change later? remove?
             }

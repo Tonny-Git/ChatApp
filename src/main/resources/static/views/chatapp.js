@@ -12,9 +12,9 @@ export default {
         channelBoxComponent
     },
     template: `
-    <div>
+    <div class="chat-app-cover-div">
         <channelBoxComponent/>
-        <div>
+        <div class="message-div">
             <messageBox/>
             <sendMessageComponent/>
         </div>

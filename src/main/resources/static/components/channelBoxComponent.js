@@ -1,6 +1,6 @@
 export default {
     template: `
-        <div>
+        <div class="channel-box-div">
             <h2>Channels</h2>
             <div v-for="(userChannel, i) in userChannels" :key="userChannel.id" @click="onClick(i)">
                 <h3>{{userChannel.title}}</h3>
