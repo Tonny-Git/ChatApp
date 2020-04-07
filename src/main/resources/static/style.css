@@ -134,4 +134,59 @@ footer {
     margin-left: 3px;
 }
 
+/* ------------
+    ChatApp
+------------- */
 
+.chat-app-cover-div {
+    display: flex;
+    flex-direction: row;
+    height: 93vh;
+    width: 100%;
+    background-color: #26262c;
+}
+
+.message-div {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+}
+
+.channel-box-div {
+    width: 15%;
+    background-color: #212126;
+}
+
+.message-box-div {
+    height: 82%;
+}
+
+.send-message-form {
+    height: 18%;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 25px;
+}
+
+.send-message-textarea, .send-message-button {
+    height: 100%;
+    outline: none;
+    border: none;
+}
+
+.send-message-textarea {
+    font-size: 1em;
+    width: 90%;
+    background-color: #303036;
+    border-radius: 10px 0px 0px 10px;
+    resize: none;
+    padding: 10px;
+}
+
+.send-message-button {
+    width: 10%;
+    background-color: #303036;
+    margin-left: 1px;
+    border-radius: 0px 10px 10px 0px;
+}

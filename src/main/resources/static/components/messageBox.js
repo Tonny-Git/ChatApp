@@ -1,20 +1,29 @@
 export default {
     template: `
-        <div>
-            <button>Delete Message</button>
+        <div class="message-box-div">
+            <div v-for="message in showMessages">
+                <p>{{message.message}}</p>
+            </div>
+            <button @click="onClick">Delete Message</button>
         </div>
     `,
-    data() {
-
+    computed: {
+        showMessages() {
+            if(this.$store.state.currentChannelMessages === null) {
+                return {}
+            } else {
+                return this.$store.state.currentChannelMessages
+            }
+        }
     },
     methods: {
-        onClick() {
-            let response = await fetch('/rest/messages', {
-                method: 'Delete',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(newMessage)
+        async onClick() {
+            //Fix later
+            let id = 4
+            document.getElementsByClassName()
+
+            let response = await fetch('/rest/messages/' + id, {
+                method: 'Delete'
             })
         }
     }

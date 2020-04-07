@@ -84,6 +84,10 @@ public class MessageService {
         return message;
     }
 
+    public List<Message> findMessagesByChannelId(int channelId) {
+        return messageRepo.findByChannelId(channelId);
+    }
+
     public void deleteOneMessage(int id) {
         messageRepo.deleteById(id);
     }
