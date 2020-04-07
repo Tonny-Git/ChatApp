@@ -5,9 +5,9 @@ export default {
                 <span class="inner-message-div">
                     <p class="message-name">{{message.senderName}}</p>
                     <p class="message-date">{{message.messageDate}}</p>
+                    <button v-if="checkDeleteMessage(message.senderId)" @click="onClick(message.id)" class="delete-button">🗑️</button>
                 </span>
                 <p class="message-p">{{message.message}}</p>
-                <button v-if="checkDeleteMessage(message.senderId)" @click="onClick(message.id)">🗑️</button>
             </div>
         </div>
     `,

@@ -14,7 +14,7 @@ export default {
     template: `
     <div class="chat-app-cover-div">
         <channelBoxComponent/>
-        <div class="message-div">
+        <div class="message-component-div">
             <messageBox/>
             <sendMessageComponent/>
         </div>
