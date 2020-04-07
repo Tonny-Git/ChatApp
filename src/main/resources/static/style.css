@@ -155,6 +155,7 @@ footer {
 .channel-box-div {
     width: 15%;
     background-color: #212126;
+    padding: 15px;
 }
 
 .message-box-div {
