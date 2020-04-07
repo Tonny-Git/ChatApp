@@ -21,9 +21,9 @@ public class MessageController {
         return messageService.findAllMessages();
     }
 
-    @GetMapping("/messages/{id}")
-    public Message getOneMessage(@PathVariable int id) {
-        return messageService.findOneMessage(id);
+    @GetMapping("/messages/{channelId}")
+    public List<Message> getMessagesByChannelId(@PathVariable int channelId) {
+        return messageService.findMessagesByChannelId(channelId);
     }
 
     @PostMapping("/messages")

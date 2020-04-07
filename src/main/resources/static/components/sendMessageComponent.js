@@ -1,8 +1,8 @@
 export default {
     template: `
-        <form @submit.prevent="sendNewMessage">
-            <textarea v-model="message"></textarea>
-            <button>Send</button>
+        <form @submit.prevent="sendNewMessage" class="send-message-form">
+            <textarea v-model="message" class="send-message-textarea" placeholder="Send a message..."></textarea>
+            <button class="send-message-button">Send</button>
         </form>
     `,
     data() {
@@ -12,14 +12,14 @@ export default {
     },
     methods: {
         async sendNewMessage() {
-            let dateTime = getDateTime()
+            let dateTime = this.getDateTime()
 
             let newMessage = {
                 messageDate: dateTime, //Fixed?
                 message: this.message,
                 read: false, //Remove in database, backend and here later if no time left.
-                senderId: this.$store.state.currentUser.id, // Fix
-                channelId: 1, // Fix (this.$store.state.currentChannel.id)
+                senderId: this.$store.state.currentUser.id, // Fixed?
+                channelId: this.$store.state.currentChannel.id, // Fixed?
                 receiverId: null, //fix
                 direct: false // Change later? remove?
             }
