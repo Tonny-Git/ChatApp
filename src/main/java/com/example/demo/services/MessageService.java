@@ -87,8 +87,6 @@ public class MessageService {
     public List<Message> findMessagesByChannelId(int channelId) {
         List<Message> messages = messageRepo.findByChannelId(channelId);
         addSenderName(messages);
-        return messages;
-        List<Message> messages  = messageRepo.findByChannelId(channelId);
 
         for (Message message: messages){
             User sender = userRepo.findById(message.getSenderId());
