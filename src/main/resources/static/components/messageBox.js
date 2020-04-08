@@ -6,6 +6,7 @@ export default {
                     <p class="message-name">{{message.senderName}}</p>
                     <p class="message-date">{{message.messageDate}}</p>
                     <button v-if="checkDeleteMessage(message.senderId)" @click="onClick(message.id)" class="delete-button">🗑️</button>
+                    <button v-if="checkIfAdmin()" @click="removeUser(message.senderId)" class="">Remove User</button>
                 </span>
                 <p class="message-p">{{message.message}}</p>
             </div>
@@ -34,6 +35,27 @@ export default {
         },
         checkDeleteMessage(senderId) {
             if(senderId === this.$store.state.currentUser.id || this.$store.state.currentChannel.admin_id === this.$store.state.currentUser.id) {
+                return true
+            } else {
+                return false
+            }
+        },
+        async removeUser(senderId) {
+            let userChannelRelation = {
+                userId: senderId,
+                channelId: this.$store.state.currentChannel.id
+            }
+            let response = await fetch('/rest/relation', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userChannelRelation)
+            })
+        },
+        checkIfAdmin() {
+            console.log("It enterd here....")
+            if(this.$store.state.currentChannel.admin_id === this.$store.state.currentUser.id) {
                 return true
             } else {
                 return false

@@ -1,3 +1,4 @@
+//Not being used
 export default {
 	template: `
     <div class="channel">
