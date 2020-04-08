@@ -1,7 +1,9 @@
 package com.example.demo.services;
 
 import com.example.demo.entities.Channel;
+import com.example.demo.entities.UserChannelRel;
 import com.example.demo.repositories.ChannelRepo;
+import com.example.demo.repositories.UserChannelRelRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +11,10 @@ import java.util.List;
 
 @Service
 public class ChannelService {
+
+    @Autowired
+    private UserChannelRelRepo userChannelRelRepo;
+
     @Autowired
     private ChannelRepo channelRepo;
 
@@ -44,7 +50,15 @@ public class ChannelService {
         Channel dbChannel = null;
         try {
             dbChannel = channelRepo.save(newChannel);
-            dbChannel.action = "new-channel";
+
+           dbChannel.action = "new-channel";
+
+
+            UserChannelRel newRelation = new UserChannelRel();
+            newRelation.setUserId(newChannel.getAdmin_id());
+            newRelation.setChannelId(newChannel.getId());
+            userChannelRelRepo.save(newRelation);
+
             socketService.sendToAll(dbChannel, Channel.class);
         } catch(Exception e) {
             e.printStackTrace();

@@ -11,10 +11,20 @@ public class Channel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
+    private int admin_id;
 
-    public Channel(Integer id, String title) {
+    public int getAdmin_id() {
+        return admin_id;
+    }
+
+    public void setAdmin_id(int admin_id) {
+        this.admin_id = admin_id;
+    }
+
+    public Channel(Integer id, String title, Integer admin_id) {
         this.id = id;
         this.title = title;
+        this.admin_id = admin_id;
     }
 
     @Transient

@@ -1,12 +1,12 @@
 export default {
 	template: `
       <div>
-        <form @submit.prevent="createNewChannel">
-            <input v-model="name" type="text"
+        <form @submit.prevent="createNewChannel" class="create-new-channel">
+            <input v-model="title" type="text"
             required
-            placeholder = "Enter the name of the channel:">
+            placeholder = "Enter the channel title:">
 
-            <button>Create New Channel</button>
+            <button class="createButton">Create</button>
 
         </form>
        </div>
@@ -15,16 +15,16 @@ export default {
 	props: [],
 	data() {
 		return {
-			name: ""
+			title: ""
 		};
 	},
 
 	methods: {
 		async createNewChannel() {
-			if (this.name != "") {
+			if (this.title != "") {
 				let newChannel = {
-					name: this.name,
-					adminid: this.$store.state.currentUser.id
+					title: this.title,
+					admin_id: this.$store.state.currentUser.id
 				};
 
 				try {
@@ -37,6 +37,8 @@ export default {
 					});
 
 					this.name = "";
+
+					// Refresh the channel list
 				} catch (e) {
 					console.log("can't post it ");
 					console.log(e);
