@@ -33,7 +33,7 @@ export default {
             })
         },
         checkDeleteMessage(senderId) {
-            if(senderId === this.$store.state.currentUser.id) {
+            if(senderId === this.$store.state.currentUser.id || this.$store.state.currentChannel.admin_id === this.$store.state.currentUser.id) {
                 return true
             } else {
                 return false
