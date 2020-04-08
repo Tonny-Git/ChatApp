@@ -8,8 +8,6 @@ export default {
                     <button v-if="checkDeleteMessage(message.senderId)" @click="onClick(message.id)" class="delete-button">🗑️</button>
                 </span>
                 <p class="message-p">{{message.message}}</p>
-            <div v-for="message in showMessages">
-                <p>{{message.sender.username}}: {{message.message}}</p>
             </div>
         </div>
     `,

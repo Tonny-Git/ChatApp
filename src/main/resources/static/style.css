@@ -170,8 +170,7 @@ footer {
 	padding: 25px;
 }
 
-.send-message-textarea,
-.send-message-button {
+.send-message-textarea, .send-message-button {
 	height: 100%;
 	outline: none;
 	border: none;
