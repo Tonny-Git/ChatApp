@@ -150,10 +150,6 @@ footer {
     display: flex;
     flex-direction: column;
     width: 85%;
-.message-div {
-	display: flex;
-	flex-direction: column;
-	width: 85%;
 }
 
 .channel-box-div {
