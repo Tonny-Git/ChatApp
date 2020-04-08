@@ -2,7 +2,7 @@ export default {
     template: `
         <div class="message-box-div">
             <div v-for="message in showMessages">
-                <p>{{message.message}}</p>
+                <p>{{message.sender.username}}:{{message.message}}</p>
             </div>
             <button @click="onClick">Delete Message</button>
         </div>

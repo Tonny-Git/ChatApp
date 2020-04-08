@@ -85,7 +85,14 @@ public class MessageService {
     }
 
     public List<Message> findMessagesByChannelId(int channelId) {
-        return messageRepo.findByChannelId(channelId);
+        List<Message> messages  = messageRepo.findByChannelId(channelId);
+
+        for (Message message: messages){
+            User sender = userRepo.findById(message.getSenderId());
+            message.setSender(sender);
+        }
+
+        return messages;
     }
 
     public void deleteOneMessage(int id) {

@@ -1,31 +1,31 @@
-@import url('https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap");
 
 /*------------------
     Major Content
 -------------------*/
 
 * {
-    box-sizing: border-box;
-    color: rgb(223, 219, 219);
-    font-family: 'Baloo Chettan 2', cursive;
+	box-sizing: border-box;
+	color: rgb(223, 219, 219);
+	font-family: "Baloo Chettan 2", cursive;
 }
 
 body {
-    margin: 0;
+	margin: 0;
 }
 
 a {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 input {
-    color: black;
-    background-color: rgb(241, 237, 237);
+	color: black;
+	background-color: rgb(241, 237, 237);
 }
 
 #app {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 /*-------------
@@ -33,105 +33,105 @@ input {
 ---------------*/
 
 nav {
-    display: flex;
-    align-items: center;
-    height: 7vh;
-    background-color: #18181b;
+	display: flex;
+	align-items: center;
+	height: 7vh;
+	background-color: #18181b;
 }
 
 nav a {
-    padding: 9px 15px 9px 15px;
-    text-align: center;
+	padding: 9px 15px 9px 15px;
+	text-align: center;
 }
 
 nav a:hover {
-    background-color: #1e1e20;
+	background-color: #1e1e20;
 }
 
 /* -------------------------
     Signup page + Home page
 --------------------------- */
 .home-container {
-    display: flex;
-    flex-direction: column;
-    height: 93vh;
-    width: 100;
+	display: flex;
+	flex-direction: column;
+	height: 93vh;
+	width: 100;
 }
 
 .home {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #26262c;
-    padding: 30px;
-    height: 90%;
-    margin: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #26262c;
+	padding: 30px;
+	height: 90%;
+	margin: 0;
 }
 
 .submit-div {
-    display: flex;
-    flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
 footer {
-    display: flex;
-    justify-content: center;
-    background-color: #1f1f23;
-    height: 10%;
-    margin: 0;
+	display: flex;
+	justify-content: center;
+	background-color: #1f1f23;
+	height: 10%;
+	margin: 0;
 }
 
 .button {
-    border: 1px solid rgb(104, 102, 102);
-    border-radius: 5px;
-    background: none;
-    padding: 10px 30px;
-    margin: 10px 5px;
-    font-size: 1em;
+	border: 1px solid rgb(104, 102, 102);
+	border-radius: 5px;
+	background: none;
+	padding: 10px 30px;
+	margin: 10px 5px;
+	font-size: 1em;
 }
 
 .button:hover {
-    background-color: #34343b;
+	background-color: #34343b;
 }
 
 .home div h1 {
-    font-size: 2.7em;
+	font-size: 2.7em;
 }
 
 .sign-up-form {
-    display: flex;
-    flex-direction: column;
-    height: 70%;
+	display: flex;
+	flex-direction: column;
+	height: 70%;
 }
 
-.sign-up-form input, .normal-input {
-    padding: 5px;
-    margin-bottom: 10px;
+.sign-up-form input,
+.normal-input {
+	padding: 5px;
+	margin-bottom: 10px;
 }
 
 .sign-up-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .sign-up-text h2 {
-    font-size: 2em;
-    margin: 0px 0px 0px 0px ;
+	font-size: 2em;
+	margin: 0px 0px 0px 0px;
 }
 
 .take-space-div {
-    height: 150px;
+	height: 150px;
 }
 
 .login-text {
-    padding-bottom: 20px;
+	padding-bottom: 20px;
 }
 
 .input-with-margin {
-    margin-left: 3px;
+	margin-left: 3px;
 }
 
 /* ------------
@@ -139,54 +139,65 @@ footer {
 ------------- */
 
 .chat-app-cover-div {
-    display: flex;
-    flex-direction: row;
-    height: 93vh;
-    width: 100%;
-    background-color: #26262c;
+	display: flex;
+	flex-direction: row;
+	height: 93vh;
+	width: 100%;
+	background-color: #26262c;
 }
 
 .message-div {
-    display: flex;
-    flex-direction: column;
-    width: 85%;
+	display: flex;
+	flex-direction: column;
+	width: 85%;
 }
 
 .channel-box-div {
-    width: 15%;
-    background-color: #212126;
+	width: 15%;
+	background-color: #212126;
+	padding: 15px;
 }
 
 .message-box-div {
-    height: 82%;
+	height: 82%;
 }
 
 .send-message-form {
-    height: 18%;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    padding: 25px;
+	height: 18%;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	padding: 25px;
 }
 
-.send-message-textarea, .send-message-button {
-    height: 100%;
-    outline: none;
-    border: none;
+.send-message-textarea,
+.send-message-button {
+	height: 100%;
+	outline: none;
+	border: none;
 }
 
 .send-message-textarea {
-    font-size: 1em;
-    width: 90%;
-    background-color: #303036;
-    border-radius: 10px 0px 0px 10px;
-    resize: none;
-    padding: 10px;
+	font-size: 1em;
+	width: 90%;
+	background-color: #303036;
+	border-radius: 10px 0px 0px 10px;
+	resize: none;
+	padding: 10px;
 }
 
 .send-message-button {
-    width: 10%;
-    background-color: #303036;
-    margin-left: 1px;
-    border-radius: 0px 10px 10px 0px;
+	width: 15%;
+	background-color: #303036;
+	margin-left: 1px;
+	border-radius: 0px 10px 10px 0px;
+}
+
+.create-new-channel {
+	width: 100%;
+	background-color: #303130;
+	padding: 15px;
+}
+.createButton{
+ background-color: #303030;
 }

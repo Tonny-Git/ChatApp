@@ -15,7 +15,7 @@ export default {
                 return this.$store.state.currentUser.listOfChannels
             }
         }
-    },
+           },
     methods: {
         async onClick(i) {
             this.$store.commit('setCurrentChannel', this.$store.state.currentUser.listOfChannels[i])

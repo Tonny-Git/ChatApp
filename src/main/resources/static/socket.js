@@ -36,7 +36,7 @@ function sendSomething() {
 function showSomething(message) {
     console.log(message);
 }
-
+/*
  switch(data.action) {
   case 'new-user':
            store.commit('appendUser', data)
@@ -59,3 +59,4 @@ function showSomething(message) {
             store.commit('deleteMessage', data.index)
             break
  }
+ */
