@@ -18,7 +18,7 @@ export default {
         <channelBoxComponent/>
         <div class="message-component-div">
         <createChannel/>
-</div>
+        </div>
         <div class="message-div">
             <messageBox/>
             <sendMessageComponent/>
