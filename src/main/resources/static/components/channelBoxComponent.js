@@ -1,5 +1,5 @@
 export default {
-	template: `
+    template: `
         <div class="channel-box-div">
             <h2>Channels</h2>
             <div v-for="(userChannel, i) in userChannels" :key="userChannel.id">
@@ -27,9 +27,11 @@ export default {
         },
         async onClickLeaveChannel(i) {
             let userChannelRelation = {
-                userId: 14,
-                channelId: 3
+                userId: this.$store.state.currentUser.id,
+                channelId: this.$store.state.currentUser.listOfChannels[i].id
             }
+            console.log(userChannelRelation.userId)
+            console.log(userChannelRelation.channelId)
             let response = await fetch('/rest/relation', {
                 method: 'DELETE',
                 headers: {
@@ -37,6 +39,7 @@ export default {
                 },
                 body: JSON.stringify(userChannelRelation)
             })
+
             this.$store.commit('removeChannelfromUser', i)
         }
     }
