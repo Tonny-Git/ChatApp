@@ -235,6 +235,6 @@ footer {
 
 .delete-button {
     border: none;
-    background-color: #26262c;
+    background-color: transparent;
     cursor: pointer;
 }
