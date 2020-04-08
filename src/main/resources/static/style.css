@@ -146,6 +146,10 @@ footer {
 	background-color: #26262c;
 }
 
+.message-component-div {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
 .message-div {
 	display: flex;
 	flex-direction: column;
@@ -191,13 +195,4 @@ footer {
 	background-color: #303036;
 	margin-left: 1px;
 	border-radius: 0px 10px 10px 0px;
-}
-
-.create-new-channel {
-	width: 100%;
-	background-color: #303130;
-	padding: 15px;
-}
-.createButton{
- background-color: #303030;
 }

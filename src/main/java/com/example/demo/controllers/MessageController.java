@@ -28,9 +28,6 @@ public class MessageController {
 
     @PostMapping("/messages")
     public Message sendOneMessage(@RequestBody Message message) {
-        System.out.println("THIS IS AN TEST");
-        System.out.println(message);
-        System.out.println("THIS IS AN TEST");
         return messageService.postMessage(message);
     }
 

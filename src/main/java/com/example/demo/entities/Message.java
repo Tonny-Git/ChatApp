@@ -19,6 +19,9 @@ public class Message {
     @Transient
     private Channel channel;
 
+    @Transient
+    private String senderName;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -151,5 +154,11 @@ public class Message {
         return direct;
     }
 
+    public String getSenderName() {
+        return senderName;
+    }
 
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
+    }
 }
