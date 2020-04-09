@@ -6,9 +6,8 @@ export default {
     },
     template: `
         <div class="channel-box-div">
-            <h3 style="color: yellow">{{showUserName}}</h3>
             <h2>Channels</h2>
-            <div v-for="(userChannel, i) in userChannels" :key="userChannel.id">
+            <div v-for="(userChannel, i) in userChannels" :key="userChannel.id" class="channel-name-div">
                 <h3 @click="onClick(i)">{{userChannel.title}}</h3>
                 <button @click="onClickLeaveChannel(i)" class="delete-button">🗑️</button>
             </div>

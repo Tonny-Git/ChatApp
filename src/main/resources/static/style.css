@@ -260,3 +260,16 @@ footer {
     border: 1px solid gray;
     border-radius: 20px;
 }
+
+/*
+    Other
+*/
+
+.channel-name-div {
+    display: flex;
+}
+
+.channel-name-div h3 {
+    display: flex;
+    margin: 10px 0px;
+}
