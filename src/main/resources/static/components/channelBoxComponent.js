@@ -1,4 +1,9 @@
+import createChannel from './createChannel.js'
+
 export default {
+    components: {
+        createChannel
+    },
     template: `
         <div class="channel-box-div">
             <h3 style="color: yellow">{{showUserName}}</h3>
@@ -7,6 +12,7 @@ export default {
                 <h3 @click="onClick(i)">{{userChannel.title}}</h3>
                 <button @click="onClickLeaveChannel(i)" class="delete-button">🗑️</button>
             </div>
+            <createChannel/>
         </div>
     `,
     computed: {
