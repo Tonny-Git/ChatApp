@@ -23,11 +23,16 @@ public class User {
     @Transient
     private ArrayList<Channel> listOfChannels;
 
-    /* we will use it later
     @Transient
-    public List<Channel> userChannels;
-    */
+    private ArrayList<Channel> otherChannels;
 
+    public void setOtherChannels(ArrayList<Channel> otherChannels){
+        this.otherChannels = otherChannels;
+    }
+
+    public ArrayList getOtherChannels(){
+        return this.otherChannels;
+    }
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -41,17 +46,7 @@ public class User {
         return friends.toArray();
     }
 
-    /*
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    @JsonIgnoreProperties("userChannels")
-    private Set<UserChannel> userChannels = new HashSet<>();
 
-    public Object[] getUserChannels() {return userChannels.toArray();}
-
-    public void setUserChannels(List<UserChannel> userChannels) {
-        this.userChannels = new HashSet<> (userChannels);
-    }
-*/
     @Transient
     public String action;
 

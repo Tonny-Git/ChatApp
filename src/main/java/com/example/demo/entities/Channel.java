@@ -50,11 +50,5 @@ public class Channel {
         return title;
     }
 
-
-    //@OneToMany(fetch = FetchType.LAZY, mappedBy = "channel")
-    //private Set<UserChannel> userChannels;
-    /*
-    public Object[] getUserChannels (){
-        return userChannels.toArray();
-    }*/
 }
+

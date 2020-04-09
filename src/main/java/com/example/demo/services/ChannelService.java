@@ -43,10 +43,6 @@ public class ChannelService {
         Channel channel = channelRepo.findById(id);
         if (channel == null) return null;
 
-        /*
-        List<Channel> pets = channelRepo.findAllByUser(id); // use the same ID as the owner when we ask for the pets
-        owner.setPets(pets);
-        */
 
         return channel;
     }
