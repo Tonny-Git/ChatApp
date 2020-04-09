@@ -40,16 +40,6 @@ export default {
 				let user = await fetch("/auth/whoami");
 				user = await user.json();
 				this.$store.commit("setCurrentUser", user);
-
-				let otherChannels = await fetch(
-					"/rest/channels/otherChannel/" + user.id
-				);
-				otherChannels = await otherChannels.json();
-
-				console.log(otherChannels);
-
-				this.$store.commit("setOtherChannels", otherChannels);
-
 				this.$router.push("/");
 			}
 			console.log(this.$store.state.currentUser);
