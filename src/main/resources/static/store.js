@@ -24,7 +24,10 @@ export const store = new Vuex.Store({
 		},
 		removeChannelfromUser(state, index) {
 			state.currentUser.listOfChannels.splice(index, 1);
-		},
+    },
+    addToCurrentChannelMessages(state, message) {
+      state.setCurrentChannelMessages.add(message)
+    }
 	},
 	actions: {},
 });

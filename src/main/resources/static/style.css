@@ -254,3 +254,9 @@ footer {
 .createButton:hover {
 	background-color: lightslategray;
 }
+
+.remove-user-button {
+    background-color: transparent;
+    border: 1px solid gray;
+    border-radius: 20px;
+}

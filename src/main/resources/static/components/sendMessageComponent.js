@@ -34,6 +34,7 @@ export default {
             })
 
             response = await response.json()
+            this.message = ''
         },
         getDateTime() {
             let newMessageDate = new Date();
