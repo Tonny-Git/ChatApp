@@ -13,11 +13,11 @@ export default {
 	template: `
         <div class="chat-app-cover-div">
             <channelBoxComponent/>
-            <channelList/>
             <div class="message-component-div">
                 <messageBox/>
                 <sendMessageComponent/>
             </div>
+            <channelList/>
         </div>
     `,
 };

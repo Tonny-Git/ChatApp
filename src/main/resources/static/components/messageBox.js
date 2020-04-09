@@ -61,7 +61,6 @@ export default {
             })
         },
         checkIfAdmin() {
-            console.log("It enterd here....")
             if(this.$store.state.currentChannel.admin_id === this.$store.state.currentUser.id) {
                 return true
             } else {

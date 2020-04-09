@@ -155,10 +155,13 @@ footer {
 .channel-box-div {
     width: 15%;
     background-color: #212126;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .message-box-div {
     height: 82%;
+    overflow: auto;
 }
 
 .send-message-form {
