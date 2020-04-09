@@ -2,8 +2,7 @@ import sendMessageComponent from "../components/sendMessageComponent.js";
 import messageBox from "../components/messageBox.js";
 import channelBoxComponent from "../components/channelBoxComponent.js";
 import createChannel from "../components/createChannel.js";
-
-//import channelList from "../components/channelList.js";
+import channelList from "../components/channelList.js";
 
 export default {
 	components: {
@@ -11,16 +10,19 @@ export default {
 		messageBox,
 		channelBoxComponent,
 		createChannel,
+		channelList,
 	},
 	template: `
     <div class="chat-app-cover-div">
+        <div>
         <channelBoxComponent/>
+        <createChannel/>
+        <channelList/>
+        </div>
         <div class="message-component-div">
             <messageBox/>
             <sendMessageComponent/>
-            <createChannel/>
-        </div>
+           </div>
     </div>
     `,
-
 };

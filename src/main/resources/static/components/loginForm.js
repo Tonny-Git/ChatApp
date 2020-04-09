@@ -1,5 +1,5 @@
 export default {
-    template: `
+	template: `
         <form @submit.prevent="login" class="home">
             <div class="sign-up-text">
                 <h2 class="login-text">Login</h2>
@@ -14,35 +14,48 @@ export default {
             </div>
         </form>
     `,
-    data() {
-        return {
-            username: '',
-            password: ''
-        }
-    },
-    methods: {
-        async login() {
-            const credentials = 'username=' + encodeURIComponent(this.username)
-            + '&password=' + encodeURIComponent(this.password)
+	data() {
+		return {
+			username: "",
+			password: "",
+		};
+	},
+	methods: {
+		async login() {
+			const credentials =
+				"username=" +
+				encodeURIComponent(this.username) +
+				"&password=" +
+				encodeURIComponent(this.password);
 
-            let response = await fetch("/login", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: credentials
-            });
+			let response = await fetch("/login", {
+				method: "POST",
+				headers: { "Content-Type": "application/x-www-form-urlencoded" },
+				body: credentials,
+			});
 
-            if(response.url.includes('error')) {
-                console.log('Wrong username/password');
-            } else {
-                let user = await fetch('/auth/whoami')
-                user = await user.json()
-                this.$store.commit('setCurrentUser', user)
-                this.$router.push('/')
-            }
-            console.log(this.$store.state.currentUser)
-        },
-        createUser() {
-            this.$router.push('/signup')
-        }
-    }
-}
+			if (response.url.includes("error")) {
+				console.log("Wrong username/password");
+			} else {
+				let user = await fetch("/auth/whoami");
+				user = await user.json();
+				this.$store.commit("setCurrentUser", user);
+
+				let otherChannels = await fetch(
+					"/rest/channels/otherChannel/" + user.id
+				);
+				otherChannels = await otherChannels.json();
+
+				console.log(otherChannels);
+
+				this.$store.commit("setOtherChannels", otherChannels);
+
+				this.$router.push("/");
+			}
+			console.log(this.$store.state.currentUser);
+		},
+		createUser() {
+			this.$router.push("/signup");
+		},
+	},
+};
