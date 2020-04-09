@@ -259,6 +259,7 @@ footer {
     background-color: transparent;
     border: 1px solid gray;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 /*
@@ -273,6 +274,7 @@ footer {
 .channel-name-div h3 {
     display: flex;
     margin: 10px 0px;
+    cursor: pointer;
 }
 
 .join-button {
