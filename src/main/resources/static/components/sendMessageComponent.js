@@ -3,7 +3,7 @@ export default {
 
         <form @submit.prevent="sendNewMessage" class="send-message-form">
             <textarea v-model="message" class="send-message-textarea" placeholder="Send a message..."></textarea>
-            <button class="send-message-button" @click="sendNewMessage">Send</button>
+            <button class="send-message-button">Send</button>
         </form>
     `,
     data() {
