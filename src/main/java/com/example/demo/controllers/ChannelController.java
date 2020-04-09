@@ -29,4 +29,9 @@ public class ChannelController {
     public Channel createNewChannel(@RequestBody Channel channel) {
         return channelService.createNewChannel(channel);
     }
+
+    @GetMapping("/channels/otherChannel/{id}")
+    public List<Channel> getUserOtherChannel(@PathVariable int id) {
+        return channelService.getUserOtherChannel(id);
+    }
 }

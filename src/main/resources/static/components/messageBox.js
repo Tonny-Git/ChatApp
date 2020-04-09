@@ -1,6 +1,7 @@
 export default {
     template: `
         <div class="message-box-div">
+            <h2>Channel: <span style="color: grey;">{{showChannelName}}</span></h2>
             <div v-for="message in showMessages" class="message-div" :hover="true">
                 <span class="inner-message-div">
                     <p class="message-name">{{message.senderName}}</p>
@@ -24,7 +25,13 @@ export default {
                 return this.$store.state.currentChannelMessages
             }
         },
-        
+        showChannelName() {
+            if (this.$store.state.currentChannel === null) {
+                return 'Public Room'
+            } else {
+                return this.$store.state.currentChannel.title
+            }
+        }
     },
     methods: {
         async onClick(id) {

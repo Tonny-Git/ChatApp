@@ -1,6 +1,7 @@
 export default {
 	template: `
         <div class="channel-box-div">
+            <h3 style="color: yellow">{{showUserName}}</h3>
             <h2>Channels</h2>
             <div v-for="(userChannel, i) in userChannels" :key="userChannel.id">
                 <h3 @click="onClick(i)">{{userChannel.title}}</h3>
@@ -14,6 +15,13 @@ export default {
                 return {}
             } else {
                 return this.$store.state.currentUser.listOfChannels
+            }
+        },
+        showUserName(){
+            if(this.$store.state.currentUser === null) {
+               return ''
+            } else {
+                return this.$store.state.currentUser.username
             }
         }
     },
