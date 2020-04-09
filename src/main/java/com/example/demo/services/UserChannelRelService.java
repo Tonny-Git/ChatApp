@@ -13,4 +13,8 @@ public class UserChannelRelService {
     public void deleteRelation(int userId, int channelId) {
         userChannelRelRepo.deleteByUserIdAndChannelId(userId, channelId);
     }
+
+    public UserChannelRel postRelation(UserChannelRel userChannelRel) {
+        return userChannelRelRepo.save(userChannelRel);
+    }
 }

@@ -27,7 +27,7 @@ export const store = new Vuex.Store({
     },
     addToCurrentChannelMessages(state, message) {
       state.setCurrentChannelMessages.add(message)
-    }
+    },
 	},
 	actions: {},
 });
