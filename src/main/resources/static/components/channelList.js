@@ -2,46 +2,26 @@ export default {
 	template: `
 		<div style="padding: 15px;">
 		<h3>Other Channels:</h3>
-			<div v-for="(otherChannel, i) in allChannels" :key="otherChannel.id" class="channel-name-div">
+			<div v-for="(otherChannel, i) in otherChannels" :key="otherChannel.id" class="channel-name-div">
 				<h4>{{otherChannel.title}}</h4>
 				<button @click="onClickJoinChannel(i)" class="join-button">Join</button>
 			</div>
 		</div>
     `,
 	computed: {
-		allChannels() {
-			if (this.$store.state.otherChannels === null) {
+		otherChannels() {
+			if (this.$store.state.currentUser === null) {
 				return {};
 			} else {
-				return this.$store.state.otherChannels;
+				return this.$store.state.currentUser.otherChannels;
 			}
-		},
+		}
 	},
 	methods: {
-		async goToChannel(channel) {
-			if (!this.userChannels.includes(channel))
-				this.addChannelToUserChannels(channel);
-			this.$store.commit("setCurrentChannel", channel);
-		},
-
-		otherChannels() {
-			return true;
-		},
-		isChannelJoined(channelId) {
-			let isItJoined = true;
-
-			for (let channel of this.userChannels) {
-				if (channel.id === channelId) {
-					isItJoined = false;
-					break;
-				}
-			}
-			return isItJoined;
-		},
 		async onClickJoinChannel(i) {
             let userChannelRelation = {
                 userId: this.$store.state.currentUser.id,
-                channelId: this.$store.state.otherChannels[i].id
+                channelId: this.$store.state.currentUser.otherChannels[i].id
             }
             let response = await fetch('/rest/relation', {
                 method: 'POST',
@@ -51,5 +31,5 @@ export default {
                 body: JSON.stringify(userChannelRelation)
             })
         }
-	},
+	}
 };

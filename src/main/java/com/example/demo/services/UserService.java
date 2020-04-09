@@ -8,10 +8,13 @@ import com.example.demo.repositories.ChannelRepo;
 import com.example.demo.repositories.UserChannelRelRepo;
 import com.example.demo.repositories.UserChannelRepo;
 import com.example.demo.repositories.UserRepo;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,6 +87,7 @@ public class UserService {
         User user = userRepo.findByUsername(username);
         try {
             user = addChannelToCurrentUser(user);
+            user = addOtherChannelToCurrentUser(user);
         } catch (Exception e) {
             System.out.println("There is no user currently logged in");
         }
@@ -105,4 +109,32 @@ public class UserService {
         return user;
     }
 
+    @Autowired
+    private EntityManager entityManager;
+
+    private Session getSession() {
+        return entityManager.unwrap(Session.class);
+    }
+
+      public User addOtherChannelToCurrentUser(User user) {
+
+        ArrayList<Channel> otherChannels = new ArrayList<>();
+
+        SQLQuery query = this.getSession()
+                .createSQLQuery("select id, title, admin_id from channels where not exists (Select 'm' from user_channel_rel where user_channel_rel.channel_id = channels.id and user_channel_rel.user_id = ?)")
+                .setParameter(1, user.getId());
+
+        List<Object[]> rows = query.list();
+
+        for(Object[] row : rows){
+            Channel newChannel = new Channel();
+            newChannel.setId(Integer.parseInt(row[0].toString()));
+            newChannel.setTitle(row[1].toString());
+            newChannel.setAdmin_id(Integer.parseInt(row[2].toString()));
+            otherChannels.add(newChannel);
+        }
+
+        user.setOtherChannels(otherChannels);
+        return user;
+    }
 }
