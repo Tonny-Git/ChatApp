@@ -7,10 +7,18 @@ connect();
 function connect() {
     ws = new WebSocket('ws://localhost:4000/your-socket-route');
     ws.onmessage = (e) => {
+      let data = JSON.parse(e.data)
+
+      if(data.message && store.state.currentChannel != null) {
+        if(store.state.currentChannel.id === data.channelId) {
+          console.log(data)
+          store.commit('addToCurrentChannelMessages', data)
+        }
+      }
       showSomething(e.data);
     }
     ws.onopen = (e) => {
-        sendSomething();
+        //sendSomething();
         isConnected = true;
     };
 

@@ -26,7 +26,9 @@ export const store = new Vuex.Store({
 			state.currentUser.listOfChannels.splice(index, 1);
     },
     addToCurrentChannelMessages(state, message) {
-      state.setCurrentChannelMessages.add(message)
+      console.log(state.currentChannelMessages)
+      state.currentChannelMessages.push(message)
+      console.log(state.currentChannelMessages)
     },
 	},
 	actions: {},
