@@ -1,13 +1,12 @@
-//Not being used
 export default {
 	template: `
-	
-	<div style="padding: 15px;">
-	<h3>Other Channels:</h3>
-	<div v-for="(otherChannel, i) in allChannels" :key="otherChannel.id">
+		<div style="padding: 15px;">
+		<h3>Other Channels:</h3>
+			<div v-for="(otherChannel, i) in allChannels" :key="otherChannel.id" class="channel-name-div">
 				<h4>{{otherChannel.title}}</h4>
-            </div>
-	</div>
+				<button @click="onClickJoinChannel(i)" class="join-button">Join</button>
+			</div>
+		</div>
     `,
 	computed: {
 		allChannels() {
@@ -39,5 +38,18 @@ export default {
 			}
 			return isItJoined;
 		},
+		async onClickJoinChannel(i) {
+            let userChannelRelation = {
+                userId: this.$store.state.currentUser.id,
+                channelId: this.$store.state.otherChannels[i].id
+            }
+            let response = await fetch('/rest/relation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userChannelRelation)
+            })
+        }
 	},
 };
