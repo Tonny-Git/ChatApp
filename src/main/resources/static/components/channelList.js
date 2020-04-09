@@ -4,7 +4,7 @@ export default {
 		<h3>Other Channels:</h3>
 			<div v-for="(otherChannel, i) in allChannels" :key="otherChannel.id" class="channel-name-div">
 				<h4>{{otherChannel.title}}</h4>
-				<button @click="onClickJoinChannel(i)">Join</button>
+				<button @click="onClickJoinChannel(i)" class="join-button">Join</button>
 			</div>
 		</div>
     `,

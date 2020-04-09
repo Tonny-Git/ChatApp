@@ -267,9 +267,21 @@ footer {
 
 .channel-name-div {
     display: flex;
+    justify-content: space-between;
 }
 
 .channel-name-div h3 {
     display: flex;
     margin: 10px 0px;
+}
+
+.join-button {
+    background-color: transparent;
+    border: 1px solid gray;
+    border-radius: 3px;
+    margin-bottom: 3px;
+}
+
+.channel-name-div h4 {
+    margin: 7px 0px;
 }
