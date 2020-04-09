@@ -9,6 +9,7 @@ import com.example.demo.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,7 +31,9 @@ public class MessageService {
 
         try{
             dbMessage = messageRepo.save(message);
-            dbMessage.action = "new-message";
+            ArrayList<Message> messages = new ArrayList<>();
+            messages.add(dbMessage);
+            dbMessage = addSenderName(messages).get(0);
             socketService.sendToAll(dbMessage, Message.class);
         } catch (Exception e) {
             e.printStackTrace();
@@ -96,7 +99,7 @@ public class MessageService {
         return messages;
     }
 
-    private List<Message> addSenderName(List<Message> messages) {
+    public List<Message> addSenderName(List<Message> messages) {
         for (int i = 0; i < messages.size(); i++) {
             try {
                 User user = userRepo.findById(messages.get(i).getSenderId());
