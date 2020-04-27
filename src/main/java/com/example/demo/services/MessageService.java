@@ -9,6 +9,7 @@ import com.example.demo.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,18 +23,37 @@ public class MessageService {
     @Autowired
     private ChannelRepo channelRepo;
 
+    @Autowired
+    private SocketService socketService;
+
+    public Message postMessage(Message message) {
+        Message dbMessage = null;
+
+        try{
+            dbMessage = messageRepo.save(message);
+            ArrayList<Message> messages = new ArrayList<>();
+            messages.add(dbMessage);
+            dbMessage = addSenderName(messages).get(0);
+            socketService.sendToAll(dbMessage, Message.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return dbMessage;
+    }
+
     public List<Message> findAllMessages() {
         List<Message> messages = (List<Message>) messageRepo.findAll();
 
 
         messages.forEach(message -> {
-            User sender = userRepo.findById(message.getSender_id());
+            User sender = userRepo.findById(message.getSenderId());
             message.setSender(sender);
 
-            User receiver = userRepo.findById(message.getReceiver_id());
+            User receiver = userRepo.findById(message.getReceiverId());
             message.setReceiver(receiver);
 
-            Integer channel_id = message.getChannel_id();
+            Integer channel_id = message.getChannelId();
             if (channel_id != null) {
                 Channel channel = channelRepo.findById((int) channel_id);
                 message.setChannel(channel);
@@ -47,17 +67,13 @@ public class MessageService {
         Message message = messageRepo.findById(id);
         if (message == null) return null;
 
-        /*
-        List<Channel> pets = channelRepo.findAllByUser(id); // use the same ID as the owner when we ask for the pets
-        owner.setPets(pets);
-        */
-        User sender = userRepo.findById(message.getSender_id());
+        User sender = userRepo.findById(message.getSenderId());
         message.setSender(sender);
 
-        User receiver = userRepo.findById(message.getReceiver_id());
+        User receiver = userRepo.findById(message.getReceiverId());
         message.setReceiver(receiver);
 
-        Integer channel_id = message.getChannel_id();
+        Integer channel_id = message.getChannelId();
         Channel channel;
         if (channel_id != null) {
             channel = channelRepo.findById((int) channel_id);
@@ -69,5 +85,46 @@ public class MessageService {
         message.setChannel(channel);
 
         return message;
+    }
+
+    public List<Message> findMessagesByChannelId(int channelId) {
+        List<Message> messages = messageRepo.findByChannelId(channelId);
+        addSenderName(messages);
+
+        for (Message message: messages){
+            User sender = userRepo.findById(message.getSenderId());
+            message.setSender(sender);
+        }
+
+        return messages;
+    }
+
+    public List<Message> addSenderName(List<Message> messages) {
+        for (int i = 0; i < messages.size(); i++) {
+            try {
+                User user = userRepo.findById(messages.get(i).getSenderId());
+                messages.get(i).setSenderName(user.getUsername());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return messages;
+    }
+
+    public void deleteOneMessage(int id) {
+        messageRepo.deleteById(id);
+    }
+
+    public Message createNewMessage(Message newMessage) {
+        Message dbMessage = null;
+        try {
+            dbMessage = messageRepo.save(newMessage);
+            dbMessage.action = "delete-message";
+            socketService.sendToAll(dbMessage, Channel.class);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return dbMessage;
     }
 }

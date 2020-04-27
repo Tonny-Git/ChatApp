@@ -1,130 +1,135 @@
 package com.example.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import javax.websocket.OnError;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String username;
     private String password;
     private String email;
-    private String firstname;
-    private String lastname;
-    boolean isactive;
-
-    /* we will use it later
+    private String firstName;
+    private String lastName;
+    boolean isActive;
     @Transient
-    public List<Channel> userChannels;
-    */
+    private ArrayList<Channel> listOfChannels;
 
+    @Transient
+    private ArrayList<Channel> otherChannels;
+
+    public void setOtherChannels(ArrayList<Channel> otherChannels){
+        this.otherChannels = otherChannels;
+    }
+
+    public ArrayList getOtherChannels(){
+        return this.otherChannels;
+    }
 
     @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            })
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "userfriends",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "friend_id") })
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "friend_id")})
     @JsonIgnoreProperties("friends")
     private Set<User> friends = new HashSet<>();
 
-    public Object[] getFriends(){
+    public Object[] getFriends() {
         return friends.toArray();
     }
 
-    /*
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    @JsonIgnoreProperties("userChannels")
-    private Set<UserChannel> userChannels = new HashSet<>();
 
-    public Object[] getUserChannels() {return userChannels.toArray();}
+    @Transient
+    public String action;
 
-    public void setUserChannels(List<UserChannel> userChannels) {
-        this.userChannels = new HashSet<> (userChannels);
+    public User() {
     }
-*/
 
-    public User(){}
-    public User(int id, String username, String password, String email, String firstname, String lastname, boolean isactive) {
-        this.id = id;
+    public User(String username, String password, String email, String firstName, String lastName, boolean isActive){
+            this.username = username;
+            this.password = password;
+            this.email = email;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.isActive = isActive;
+    }
+
+    public void setId ( int id){
+            this.id = id;
+        }
+
+    public void setUsername (String username){
         this.username = username;
-        this.password = password;
-        this.email = email;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.isactive = isactive;
-
     }
 
-    public void setId(int id) {
-        this.id = id;
+    @JsonProperty
+    public void setPassword (String password){
+            this.password = password;
+        }
+
+    public void setEmail (String email){
+            this.email = email;
+        }
+
+    public void setFirstName(String firstName){
+            this.firstName = firstName;
+        }
+
+    public void setLastName(String lastName){
+        this.lastName = lastName;
     }
 
-    public void setUserName(String userName) {
-        this.username = userName;
+    public void setIsActive ( boolean isActive){
+            this.isActive = isActive;
+        }
+
+    public int getId () {
+            return id;
+        }
+
+    public String getUsername () {
+            return username;
+        }
+
+    @JsonIgnore
+    public String getPassword () {
+            return password;
+        }
+
+    public String getEmail () {
+            return email;
+        }
+
+    public String getFirstName() {
+            return firstName;
+        }
+
+    public String getLastName() {
+            return lastName;
+        }
+
+    public boolean isIsActive () {
+            return isActive;
+        }
+
+    public ArrayList<Channel> getListOfChannels() {
+        return listOfChannels;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public void setIsactive(boolean isactive) {
-        this.isactive = isactive;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getUserName() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public boolean isIsactive() {
-        return isactive;
+    public void setListOfChannels(ArrayList<Channel> listOfChannels) {
+        this.listOfChannels = listOfChannels;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals (Object o){
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User that = (User) o;
@@ -132,8 +137,9 @@ public class User {
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode () {
         return Objects.hash(getId());
     }
 
 }
+

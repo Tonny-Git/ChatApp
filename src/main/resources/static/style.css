@@ -1,208 +1,290 @@
-:root {
-    font-size: 16px;
-    font-family: 'Baloo Chettan 2', cursive;
-    --text-primary: #b6b6b6;
-    --text-secondary: #ececec;
     --bg-primary: rgb(13, 14, 13);
-    --bg-secondary: rgb(31, 31, 45);
-    --bg-tertiary: rgb(30, 30, 32);
-    --transition-speed: 600ms;
-<<<<<<< HEAD
-    --leftDistance: 5rem;
-=======
->>>>>>> master
+@import url("https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap");
+
+/*------------------
+    Major Content
+-------------------*/
+
+* {
+	box-sizing: border-box;
+	color: rgb(223, 219, 219);
+	font-family: "Baloo Chettan 2", cursive;
 }
 
 body {
-    color: black;
-    background-color: white;
-    margin: 0;
-    padding: 0;
+	margin: 0;
 }
 
-
-body::-webkit-scrollbar {
-    width: 0.33rem;
+a {
+	text-decoration: none;
 }
 
-body::-webkit-scrollbar-track {
-    background: var(--bg-primary);
+input {
+	color: black;
+	background-color: rgb(241, 237, 237);
 }
 
-body::-webkit-scrollbar-thumb {
-    background: var(--bg-secondary);
+#app {
+	display: flex;
+	flex-direction: column;
 }
 
-<<<<<<< HEAD
-body::-webkit-scrollbar-thumb-hover {
-=======
-body::-webkit-scrollbar-thumb:hover {
->>>>>>> master
-    background: var(--text-primary);
+/*-------------
+    navbar
+---------------*/
+
+nav {
+	display: flex;
+	align-items: center;
+	height: 7vh;
+	background-color: #18181b;
 }
 
-main {
-<<<<<<< HEAD
-    margin-left: var(--leftDistance);
-=======
-    margin-left: 5rem;
->>>>>>> master
-    padding: 1rem;
+nav a {
+	padding: 9px 15px 9px 15px;
+	text-align: center;
 }
 
-
-.navbar {
-    position: fixed;
-    background-color: var(--bg-primary);
-    transition: width 600ms ease;
-
+nav a:hover {
+	background-color: #1e1e20;
 }
 
-.navbar-nav {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+/* -------------------------
+    Signup page + Home page
+--------------------------- */
+.home-container {
+	display: flex;
+	flex-direction: column;
+	height: 93vh;
+	width: 100;
+}
+
+.home {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #26262c;
+	padding: 30px;
+	height: 90%;
+	margin: 0;
+}
+
+.submit-div {
+	display: flex;
+	flex-direction: row;
+}
+
+footer {
+	display: flex;
+	justify-content: center;
+	background-color: #1f1f23;
+	height: 10%;
+	margin: 0;
+}
+
+.button {
+	border: 1px solid rgb(104, 102, 102);
+	border-radius: 5px;
+	background: none;
+	padding: 10px 30px;
+	margin: 10px 5px;
+	font-size: 1em;
+}
+
+.button:hover {
+	background-color: #34343b;
+}
+
+.home div h1 {
+	font-size: 2.7em;
+}
+
+.sign-up-form {
+	display: flex;
+	flex-direction: column;
+	height: 70%;
+}
+
+.sign-up-form input,
+.normal-input {
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+.sign-up-text {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.sign-up-text h2 {
+	font-size: 2em;
+	margin: 0px 0px 0px 0px;
+}
+
+.take-space-div {
+	height: 150px;
+}
+
+.login-text {
+	padding-bottom: 20px;
+}
+
+.input-with-margin {
+	margin-left: 3px;
+}
+
+/* ------------
+    ChatApp
+------------- */
+
+.chat-app-cover-div {
+    display: flex;
+    flex-direction: row;
+    height: 93vh;
+    width: 100%;
+    background-color: #26262c;
+}
+
+.message-component-div {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    height: 100%;
+    width: 85%;
 }
 
-.nav-item {
-    width: 100%;
+.channel-box-div {
+    width: 15%;
+    background-color: #212126;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-.nav-item:last-child {
-    margin-top: auto;
+.message-box-div {
+    height: 82%;
+    overflow: auto;
 }
 
-.nav-link {
+.send-message-form {
+    height: 18%;
     display: flex;
-    align-items: center;
-<<<<<<< HEAD
-    height: var(--leftDistance);
-    ;
-=======
-    height: 5rem;
->>>>>>> master
-    color: var(--text-primary);
-    text-decoration: none;
-    filter: grayscale(100%) opacity(0.7);
-    transition: var(--transition-speed);
-}
-
-.nav-link:hover {
-    filter: grayscale(0%) opacity(1);
-    background: var(--bg-secondary);
-    color: var(--text-secondary);
-}
-
-.link-text {
-    display: none;
-    margin-left: 1rem;
-}
-
-.nav-link svg {
-    width: 2rem;
-    min-width: 2rem;
-    margin: 0 1.5rem;
-}
-
-.fa-primary {
-    color: rgb(88, 243, 17);
-}
-
-.fa-secondary {
-    color: rgb(122, 236, 143);
-}
-
-.fa-primary,
-.fa-secondary {
-    transition: var(--transition-speed);
-}
-
-.logo {
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    text-align: center;
-    color: var(--text-secondary);
-    background: var(--bg-secondary);
-    font-size: 1.5rem;
-    letter-spacing: 0.3ch;
+    flex-direction: row;
     width: 100%;
+    padding: 25px;
 }
 
-.logo svg {
-    transform: rotate(0deg);
-    transition: var(--transition-speed);
+.send-message-textarea, .send-message-button {
+    height: 100%;
+    outline: none;
+    border: none;
 }
 
-.logo-text {
-    display: inline;
-    position: absolute;
-    left: -999px;
-    transition: var(--transition-speed);
+.send-message-textarea {
+    font-size: 1em;
+    width: 90%;
+    background-color: #303036;
+    border-radius: 10px 0px 0px 10px;
+    resize: none;
+    padding: 10px;
 }
 
-.navbar:hover .logo svg {
-    transform: rotate(-180deg);
+.send-message-button {
+    width: 10%;
+    background-color: #303036;
+    margin-left: 1px;
+    border-radius: 0px 10px 10px 0px;
 }
 
-/* Small screens */
-@media only screen and (max-width: 600px) {
-    .navbar {
-        bottom: 0;
-        width: 100vw;
-<<<<<<< HEAD
-        height: var(--leftDistance);
-=======
-        height: 5rem;
->>>>>>> master
-    }
+/* --------------
+    Message Box
+----------------*/
 
-    .logo {
-        display: none;
-    }
-
-    .navbar-nav {
-        flex-direction: row;
-    }
-
-    .nav-link {
-        justify-content: center;
-    }
-
-    main {
-        margin: 0;
-    }
+.message-div {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    margin-bottom: 10px;
 }
 
-/* Large screens */
-@media only screen and (min-width: 600px) {
-    .navbar {
-        top: 0;
-<<<<<<< HEAD
-        width: var(--leftDistance);
-=======
-        width: 5rem;
->>>>>>> master
-        height: 100vh;
-    }
+.inner-message-div {
+    display: flex;
+    flex-direction: row;
+}
 
-    .navbar:hover {
-        width: 16rem;
-    }
+.inner-message-div p {
+    margin: 0px;
+}
 
-    .navbar:hover .link-text {
-        display: inline;
-    }
+.message-p {
+    color: rgb(197, 191, 191);
+    margin: 0px 0px 10px 0px;
+    font-size: 1em;
+}
 
-    .navbar:hover .logo svg {
-        margin-left: 11rem;
-    }
+.message-name {
+    line-height: 1em;
+    font-size: 1.2em;
+    font-weight: 500;
+    padding: 5px 5px 5px 0px;
+}
 
-    .navbar:hover .logo-text {
-        left: 0px;
-    }
+.message-date {
+    line-height: 1em;
+    color: rgb(150, 148, 148);
+    font-size: 0.8em;
+    font-weight: 100;
+    vertical-align: bottom;
+    padding: 10px 10px 10px 10px;
+}
+
+.delete-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.create-new-channel {
+	width: 80%;
+	background-color: #303036;
+	padding: 15px;
+}
+.createButton {
+	border-radius: 4px;
+	background-color: gray;
+}
+.createButton:hover {
+	background-color: lightslategray;
+}
+
+.remove-user-button {
+    background-color: transparent;
+    border: 1px solid gray;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/*
+    Other
+*/
+
+.channel-name-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.channel-name-div h3 {
+    display: flex;
+    margin: 10px 0px;
+    cursor: pointer;
+}
+
+.join-button {
+    background-color: transparent;
+    border: 1px solid gray;
+    border-radius: 3px;
+    margin-bottom: 3px;
+}
+
+.channel-name-div h4 {
+    margin: 7px 0px;
 }
